@@ -1,0 +1,59 @@
+<div class="page-background">
+  <div class="page-container">
+
+    <h1 class="title">Planes</h1>
+
+    <div
+      class="plan-card"
+      *ngFor="let plan of plans"
+      [class.selected]="selectedPlan === plan.id"
+    >
+      <!-- Título -->
+      <h2 class="plan-title">{{ plan.name }}</h2>
+
+      <!-- Descripción -->
+      <p class="plan-description">{{ plan.description }}</p>
+
+      <!-- PRECIO DEBAJO DE LA DESCRIPCIÓN -->
+      <div class="price-tag">
+        <span class="price-red">${{ plan.price }} </span> 
+        <span class="price-black">MXN / mes</span>
+      </div>
+
+      <!-- BOTÓN CONTRATAR -->
+      <button
+        *ngIf="selectedPlan !== plan.id"
+        class="btn-contratar"
+        (click)="selectPlan(plan.id)"
+      >
+        Contratar
+      </button>
+
+      <!-- FORMULARIO -->
+      <div *ngIf="selectedPlan === plan.id" class="form-container">
+        <label>Nombre completo:</label>
+        <input type="text" [(ngModel)]="formData.name" placeholder="Ingresa tu nombre completo">
+
+        <label>Número de tarjeta:</label>
+        <input type="text" [(ngModel)]="formData.cardNumber" placeholder="Ingresa tu número de tarjeta">
+
+        <div class="row">
+          <div class="column">
+            <label>Fecha de expiración</label>
+            <input type="text" [(ngModel)]="formData.expiration" placeholder="MM/AA">
+          </div>
+          <div class="column">
+            <label>CVV</label>
+            <input type="text" [(ngModel)]="formData.cvv" placeholder="CVV">
+          </div>
+        </div>
+
+        <div class="buttons">
+          <button class="btn-cancelar" (click)="cancel()">Cancelar</button>
+          <button class="btn-pagar" (click)="pay()">Pagar</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
