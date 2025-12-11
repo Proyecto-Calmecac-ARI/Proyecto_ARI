@@ -1,0 +1,198 @@
+/* PALETA DEL PROYECTO */
+$color-black: #000000;
+$color-white: #FFFFFF;
+$color-red: #FF0000;
+$color-orange: #FF6C00;
+$color-green: #12E800;
+
+/* ===================================== */
+/* CONTENEDOR PRINCIPAL */
+/* ===================================== */
+.login-wrapper {
+  width: 100%;
+  min-height: 100dvh;  // mucho mejor para móviles
+  background-image: url('/Assets/Images/Login/Fondo principal.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Capa oscura solo en el footer */
+.overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+}
+
+/* ===================================== */
+/* CONTENIDO PRINCIPAL */
+/* ===================================== */
+.content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: $color-white;
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* TÍTULO PRINCIPAL COMO IMAGEN */
+.title-image {
+  width: 100%;
+  max-width: 380px;
+  display: block;
+  margin: 0 auto 30px;
+  object-fit: contain;
+}
+
+/* ===================================== */
+/* FORMULARIO */
+/* ===================================== */
+.form-box {
+    width: 100%;    
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+align-items: center; 
+  input {
+    padding: 12px 18px;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    width: 100%;     
+  max-width: 420px;   // <--- que coincida con el contenedor
+    font-size: 1rem;
+
+    /* Color del texto */
+    color: $color-red;
+
+    /* Color del placeholder */
+    &::placeholder {
+      color: rgba(255, 0, 0, 0.6);
+    }
+  }
+
+  .forgot {
+    font-size: 0.9rem;
+    color: $color-red;
+    margin-left: auto;
+    margin-top: -10px;
+    cursor: pointer;
+  }
+
+  .btn {
+    padding: 12px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+
+    &.register {
+      background: $color-red;
+      color: $color-white;
+    }
+
+    &.login {
+      background: transparent;
+      color: $color-white;
+    }
+  }
+}
+.form-box .btn {
+  width: 100%;
+  max-width: 420px;   // mismo ancho que los inputs
+}
+
+/* ===================================== */
+/* FOOTER */
+/* ===================================== */
+.footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  text-align: center;
+  color: $color-white;
+  z-index: 2;
+
+  p {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+
+  .arrow {
+    font-size: 1rem;
+    display: block;
+    animation: bounce 1.5s infinite;
+  }
+}
+
+/* ===================================== */
+/* RESPONSIVE */
+/* ===================================== */
+@media (max-width: 768px) {
+  .title-image {
+    max-width: 300px;
+    margin-bottom: 20px;
+  }
+
+  .form-box {
+    gap: 14px;
+
+    input {
+      font-size: 0.9rem;
+      padding: 10px 16px;
+    }
+
+    .btn {
+      font-size: 1rem;
+      padding: 10px;
+    }
+  }
+
+  .footer p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: 10px;
+    max-width: 90%;
+  }
+
+  .title-image {
+    max-width: 220px;
+  }
+
+  .form-box {
+    gap: 12px;
+
+    input {
+      padding: 10px 14px;
+      font-size: 0.85rem;
+    }
+
+    .btn {
+      padding: 10px;
+      font-size: 0.95rem;
+    }
+  }
+
+  .footer {
+    bottom: 12px;
+  }
+}
