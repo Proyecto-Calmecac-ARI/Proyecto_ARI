@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { MembresiaComponent } from "../../Components/membresia/membresia.component";
 
 @Component({
   selector: 'app-dasboard-wick-out-plan',
-  imports: [],
+  imports: [MembresiaComponent],
   templateUrl: './dasboard-wick-out-plan.html',
   styleUrl: './dasboard-wick-out-plan.scss',
 })

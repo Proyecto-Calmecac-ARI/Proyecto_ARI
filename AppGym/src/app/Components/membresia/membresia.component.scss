@@ -1,0 +1,240 @@
+/* Fondo general */
+.page-background {
+  background: linear-gradient(to bottom,  #000000,#5c0404dc);
+  padding: 0px 15px;
+  min-height: 100vh;
+}
+
+/* Contenedor centrado */
+.page-container {
+  max-width: 900px;
+  margin: auto;
+}
+
+/* Título de la página */
+.title {
+  color: white;
+  font-size: 38px;
+  margin-bottom: 25px;
+}
+
+/* Tarjeta de cada plan */
+.plan-card {
+  background: white;
+  border-radius: 30px;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  transition: 0.3s ease;
+}
+
+.plan-card.selected {
+  transform: scale(1.02);
+}
+
+/* Título del plan */
+.plan-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.red {
+  color: #e00000;
+}
+
+.black {
+  color: black;
+}
+
+
+/* Descripción */
+.plan-description {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #000000;
+}
+
+/* Precio del plan */
+.price-tag {
+  margin-top: 15px;
+  text-align: right;
+}
+
+.price-red {
+  font-size: 32px;
+  font-weight: bold;
+  color: #cc0000;
+  /*display: block;*/
+}
+
+.price-black {
+  font-size: 20px;
+  color: black;
+}
+
+/* Botón contratar */
+.btn-contratar {
+  margin-top: 20px;
+  background: #cc0000;
+  border: none;
+  color: white;
+  padding: 10px 22px;
+  font-size: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-contratar:hover {
+  background: #a30000;
+}
+
+/* Formulario */
+.form-container {
+  margin-top: 20px;
+}
+
+input {
+  color: rgb(255, 255, 255);
+  width: 100%;
+  padding: 5px;
+  border-radius: 100px;
+  border: 1px solid #cc0000;
+  margin-bottom: 20px;
+  outline: none;
+  background-color: #cc0000;
+  
+}
+
+
+
+::placeholder{
+  color: rgb(163, 156, 156);
+}
+
+/* Fila 50/50 */
+.row {
+  display: flex;
+  gap: 100px;
+}
+
+.column {
+  flex: 1;
+}
+
+/* Botones inferiores */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn-cancelar,
+.btn-pagar {
+  padding: 10px 30px;
+  border-radius: 100px;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-cancelar:hover {
+  background: #a30000;
+}
+
+.btn-pagar:hover {
+  background: #a30000;
+}
+
+
+.btn-cancelar {
+  background: #cc0000;
+  color: white;
+}
+
+.btn-pagar {
+  background: #cc0000;
+  color: white;
+}
+
+
+
+/* RESPONSIVO */
+
+@media (max-width: 650px) {
+  /*.row {
+    flex-direction: column;
+  }*/
+
+  .price-tag {
+    text-align: right;
+  }
+
+  .price-red {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .topbar {
+    padding: 10px 10px;
+  }
+
+  .username {
+    max-width: 90px;
+  }
+}
+
+/* */
+/* BARRA SUPERIOR */
+.topbar {
+  /*width: 100%;*/
+  padding: 1px 1px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.member-logo {
+  height: 100px;
+  width: 200px;
+  object-fit: contain;
+  
+}
+
+.brand {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.perfil-ico {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  /*border: 2px solid white;*/
+}
+
+.username {
+  font-size: 18px;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;           
+  text-overflow: ellipsis;
+  max-width: 130px;
+}
+

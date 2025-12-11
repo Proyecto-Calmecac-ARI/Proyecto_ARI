@@ -1,0 +1,76 @@
+ <div class="page-background">
+
+  <!--barra "logo y usuario en la parte superior"-->
+    <div class="topbar">
+      <div class="topbar-left">
+        <img src="/Assets/Images/Membresia/FitManager.png" class="member-logo" alt="logo">
+      </div>
+
+      <div class="topbar-right">
+        <img src="/Assets/Images/Membresia/perfil.png" class="perfil-ico" alt="perfil">
+        <span class="username">Mario Montero</span>
+      </div>
+    </div>
+
+  <div class="page-container">
+
+    <h1 class="title" [ngStyle]="{ 'font-family': getFont(CustomFonts.IMPACT) }">Planes</h1>
+
+    <div
+      class="plan-card"
+      *ngFor="let plan of plans"
+      [class.selected]="selectedPlan === plan.id"
+    >
+      <!-- Título -->
+      <h2 class="plan-title" [ngStyle]="{ 'font-family': getFont(CustomFonts.IMPACT) }">
+        <span class="black">{{ plan.name.split(' ')[0] }}</span>
+         <span class="red">{{ plan.name.split(' ')[1] }}</span>
+</h2>
+
+
+      <!-- Descripción -->
+      <p class="plan-description" [ngStyle]="{ 'font-family': getFont(CustomFonts.K2D_REGULAR) }">{{ plan.description }}</p>
+
+      <!-- PRECIO DEBAJO DE LA DESCRIPCIÓN -->
+      <div class="price-tag" [ngStyle]="{ 'font-family': getFont(CustomFonts.IMPACT) }">
+        <span class="price-red">${{ plan.price }} </span> 
+        <span class="price-black">MXN / mes</span>
+      </div>
+
+      <!-- BOTÓN CONTRATAR -->
+      <button
+        *ngIf="selectedPlan !== plan.id"
+        class="btn-contratar" [ngStyle]="{ 'font-family': getFont(CustomFonts.K2D_REGULAR) }"
+        (click)="selectPlan(plan.id)"
+      >
+        Contratar
+      </button>
+
+      <!-- FORMULARIO -->
+      <div *ngIf="selectedPlan === plan.id" class="form-container" [ngStyle]="{ 'font-family': getFont(CustomFonts.K2D_REGULAR) }">
+        <label>Nombre completo:</label>
+        <input type="text" [(ngModel)]="formData.name" placeholder="Ingresa tu nombre completo">
+
+        <label>Número de tarjeta:</label>
+        <input type="text" [(ngModel)]="formData.cardNumber" placeholder="Ingresa tu número de tarjeta">
+
+        <div class="row">
+          <div class="column">
+            <label>Fecha de expiración</label>
+            <input type="text" [(ngModel)]="formData.expiration" placeholder="MM/AA">
+          </div>
+          <div class="column">
+            <label>CVV</label>
+            <input type="text" [(ngModel)]="formData.cvv" placeholder="CVV">
+          </div>
+        </div>
+
+        <div class="buttons">
+          <button class="btn-cancelar" (click)="cancel()">Cancelar</button>
+          <button class="btn-pagar" (click)="pay()">Pagar</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
