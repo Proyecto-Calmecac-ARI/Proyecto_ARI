@@ -1,7 +1,7 @@
 /* Fondo general */
 .page-background {
   background: linear-gradient(to bottom,  #000000,#5c0404dc);
-  padding: 30px 15px;
+  padding: 0px 15px;
   min-height: 100vh;
 }
 
@@ -34,19 +34,27 @@
 
 /* Título del plan */
 .plan-title {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: bold;
+}
+
+.red {
+  color: #e00000;
+}
+
+.black {
   color: black;
 }
+
 
 /* Descripción */
 .plan-description {
   margin-top: 10px;
   font-size: 16px;
-  color: #333;
+  color: #000000;
 }
 
-/* PRECIO DEBAJO DE LA DESCRIPCIÓN */
+/* Precio del plan */
 .price-tag {
   margin-top: 15px;
   text-align: right;
@@ -181,7 +189,7 @@ input {
 /* */
 /* BARRA SUPERIOR */
 .topbar {
-  width: 100%;
+  /*width: 100%;*/
   padding: 1px 1px;
   display: flex;
   justify-content: space-between;
@@ -197,7 +205,7 @@ input {
 
 .member-logo {
   height: 100px;
-  width: 100px;
+  width: 200px;
   object-fit: contain;
   
 }
@@ -218,7 +226,7 @@ input {
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid white;
+  /*border: 2px solid white;*/
 }
 
 .username {

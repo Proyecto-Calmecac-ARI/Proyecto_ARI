@@ -1,19 +1,20 @@
- <!--barra "logo y usuario en la parte superior"-->
-<div class="topbar">
-  <div class="topbar-left">
-    <img src="imagenes/FitManager.png" class="member-logo" alt="logo">
-  </div>
+ <div class="page-background">
 
-  <div class="topbar-right">
-    <img src="imagenes/perfil.png" class="perfil-ico" alt="perfil">
-    <span class="username">Mario Montero</span>
-  </div>
-</div>
+  <!--barra "logo y usuario en la parte superior"-->
+    <div class="topbar">
+      <div class="topbar-left">
+        <img src="/Assets/Images/Membresia/FitManager.png" class="member-logo" alt="logo">
+      </div>
 
-<div class="page-background">
+      <div class="topbar-right">
+        <img src="/Assets/Images/Membresia/perfil.png" class="perfil-ico" alt="perfil">
+        <span class="username">Mario Montero</span>
+      </div>
+    </div>
+
   <div class="page-container">
 
-    <h1 class="title">Planes</h1>
+    <h1 class="title" [ngStyle]="{ 'font-family': getFont(CustomFonts.IMPACT) }">Planes</h1>
 
     <div
       class="plan-card"
@@ -21,13 +22,17 @@
       [class.selected]="selectedPlan === plan.id"
     >
       <!-- Título -->
-      <h2 class="plan-title">{{ plan.name }}</h2>
+      <h2 class="plan-title" [ngStyle]="{ 'font-family': getFont(CustomFonts.IMPACT) }">
+        <span class="black">{{ plan.name.split(' ')[0] }}</span>
+         <span class="red">{{ plan.name.split(' ')[1] }}</span>
+</h2>
+
 
       <!-- Descripción -->
-      <p class="plan-description">{{ plan.description }}</p>
+      <p class="plan-description" [ngStyle]="{ 'font-family': getFont(CustomFonts.K2D_REGULAR) }">{{ plan.description }}</p>
 
       <!-- PRECIO DEBAJO DE LA DESCRIPCIÓN -->
-      <div class="price-tag">
+      <div class="price-tag" [ngStyle]="{ 'font-family': getFont(CustomFonts.IMPACT) }">
         <span class="price-red">${{ plan.price }} </span> 
         <span class="price-black">MXN / mes</span>
       </div>
@@ -35,14 +40,14 @@
       <!-- BOTÓN CONTRATAR -->
       <button
         *ngIf="selectedPlan !== plan.id"
-        class="btn-contratar"
+        class="btn-contratar" [ngStyle]="{ 'font-family': getFont(CustomFonts.K2D_REGULAR) }"
         (click)="selectPlan(plan.id)"
       >
         Contratar
       </button>
 
       <!-- FORMULARIO -->
-      <div *ngIf="selectedPlan === plan.id" class="form-container">
+      <div *ngIf="selectedPlan === plan.id" class="form-container" [ngStyle]="{ 'font-family': getFont(CustomFonts.K2D_REGULAR) }">
         <label>Nombre completo:</label>
         <input type="text" [(ngModel)]="formData.name" placeholder="Ingresa tu nombre completo">
 

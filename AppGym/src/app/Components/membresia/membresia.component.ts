@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CustomFonts } from '../../enums/fonts.enum';
+import { getFont } from '../../utils/font.util';
 
 @Component({
   selector: 'app-membresia',
@@ -10,6 +12,8 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./membresia.component.scss']
 })
 export class MembresiaComponent {
+     CustomFonts = CustomFonts;
+      getFont = getFont;
 
   selectedPlan: string | null = null;
 
