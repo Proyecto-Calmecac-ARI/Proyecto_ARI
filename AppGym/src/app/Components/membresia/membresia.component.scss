@@ -150,7 +150,10 @@ input {
   color: white;
 }
 
+
+
 /* RESPONSIVO */
+
 @media (max-width: 650px) {
   /*.row {
     flex-direction: column;
@@ -164,3 +167,66 @@ input {
     font-size: 20px;
   }
 }
+
+@media (max-width: 600px) {
+  .topbar {
+    padding: 10px 10px;
+  }
+
+  .username {
+    max-width: 90px;
+  }
+}
+
+/* */
+/* BARRA SUPERIOR */
+.topbar {
+  width: 100%;
+  padding: 1px 1px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.member-logo {
+  height: 100px;
+  width: 100px;
+  object-fit: contain;
+  
+}
+
+.brand {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.perfil-ico {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+}
+
+.username {
+  font-size: 18px;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;           
+  text-overflow: ellipsis;
+  max-width: 130px;
+}
+
