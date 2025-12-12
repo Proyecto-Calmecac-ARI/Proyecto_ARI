@@ -15,7 +15,9 @@
 .title {
   color: white;
   font-size: 38px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
+  margin-left: 80px;
+  margin-top: 1px;  
 }
 
 /* Tarjeta de cada plan */
@@ -177,6 +179,10 @@ input {
 }
 
 @media (max-width: 600px) {
+  .member-logo {
+    width: 120px;
+    height: 60px;
+  }
   .topbar {
     padding: 10px 10px;
   }
@@ -184,16 +190,21 @@ input {
   .username {
     max-width: 90px;
   }
+
+  .title{
+  margin-left: 10px;
+  }
 }
 
 /* */
 /* BARRA SUPERIOR */
 .topbar {
   /*width: 100%;*/
-  padding: 1px 1px;
+  padding: 1px 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+   padding-bottom: 0px;
 }
 
 
@@ -204,8 +215,8 @@ input {
 }
 
 .member-logo {
-  height: 100px;
-  width: 200px;
+  height: 70px;
+  width: 150px;
   object-fit: contain;
   
 }
