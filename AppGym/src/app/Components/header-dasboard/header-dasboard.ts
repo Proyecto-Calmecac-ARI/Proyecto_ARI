@@ -3,13 +3,14 @@ import { CommonModule } from '@angular/common';
 import { CustomFonts } from '../../enums/fonts.enum';
 import { getFont } from '../../utils/font.util';
 
+
 @Component({
-  selector: 'app-dasboard-up',
-  imports: [ CommonModule ],
-  templateUrl: './dasboard-up.html',
-  styleUrl: './dasboard-up.scss',
+  selector: 'app-header-dasboard',
+  imports: [CommonModule],
+  templateUrl: './header-dasboard.html',
+  styleUrl: './header-dasboard.scss',
 })
-export class DasboardUp {
-  customFonts = CustomFonts
+export class HeaderDasboard {
+  CustomFonts = CustomFonts
   getFont = getFont
 }
