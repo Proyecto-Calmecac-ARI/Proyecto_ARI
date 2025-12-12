@@ -8,7 +8,7 @@
 
       <div class="topbar-right">
         <img src="/Assets/Images/Membresia/perfil.png" class="perfil-ico" alt="perfil">
-        <span class="username">Mario Montero</span>
+        <span class="username">Jorge Armando</span>
       </div>
     </div>
     
@@ -23,7 +23,7 @@
       <h2 class="plan-title" [ngStyle]="{ 'font-family': getFont(CustomFonts.IMPACT) }">
         <span class="black">{{ plan.name.split(' ')[0] }}</span>&nbsp;
          <span class="red">{{ plan.name.split(' ')[1] }}</span>
-</h2>
+    </h2>
 
 
       <!-- Descripción -->
@@ -45,7 +45,7 @@
       </button>
 
       <!-- FORMULARIO -->
-      <div *ngIf="selectedPlan === plan.id" class="form-container" [ngStyle]="{ 'font-family': getFont(CustomFonts.K2D_REGULAR) }">
+      <div *ngIf="selectedPlan === plan.id" class="form-container" [ngStyle]="{ 'font-family': getFont(CustomFonts.K2D_REGULAR)}">
         <label>Nombre completo:</label>
         <input type="text"[ngStyle]="{ 'font-family': getFont(CustomFonts.K2D_REGULAR) }" [(ngModel)]="formData.name" placeholder="Ingresa tu nombre completo">
 
@@ -55,7 +55,7 @@
         <div class="row">
           <div class="column">
             <label>Fecha de expiración</label>
-            <input type="text"[ngStyle]="{ 'font-family': getFont(CustomFonts.K2D_REGULAR) }" [(ngModel)]="formData.expiration" placeholder="MM/AA">
+            <input type="text"[ngStyle]="{ 'font-family': getFont(CustomFonts.K2D_REGULAR) }" [(ngModel)]="formData.expiration" placeholder="01/26">
           </div>
           <div class="column"[ngStyle]="{ 'font-family': getFont(CustomFonts.K2D_REGULAR) }">
             <label>CVV</label>
