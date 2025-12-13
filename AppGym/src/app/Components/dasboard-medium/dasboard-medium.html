@@ -1,44 +1,82 @@
 <div class="dashboard-container">
+  
 
   <!-- CONTENEDOR FILA -->
   <div class="dashboard-row">
 
     <!-- RECUADRO RANKING -->
-    <section class="ranking-card">
-      <h2 class="title">Ranking de usuarios</h2>
+   <section class="ranking-card">
+  <h2 class="title"
+      [ngStyle]="{'font-family': getFont(customFonts.IMPACT)}">
+    Ranking de usuarios
+  </h2>
 
-      <div class="ranking-list">
-        <div class="ranking-item">
-          <img src="/Assets/Images/Dashboard/perfil.png" class="avatar" />
-          <p class="position">1° - Jorge</p>
-          <p class="trophies">200 Trofeos</p>
-        </div>
+  <div class="ranking-list">
 
-        <div class="ranking-item">
-          <img src="/Assets\Images\Dashboard\perfil.png" class="avatar" />
-          <p class="position">2° - Jorge</p>
-          <p class="trophies">150 Trofeos</p>
-        </div>
+    <div class="ranking-item">
+      <img src="/assets/images/dashboard/perfil.png" class="avatar" />
+      <p class="position"
+         [ngStyle]="{'font-family': getFont(customFonts.IMPACT)}">
+        1° - Jorge Armando
+      </p>
+      <p class="trophies"
+         [ngStyle]="{'font-family': getFont(customFonts.IMPACT)}">
+        200 Trofeos
+      </p>
+    </div>
 
-        <div class="ranking-item">
-          <img src="/Assets\Images\Dashboard\perfil.png" class="avatar" />
-          <p class="position">3° - Jorge</p>
-          <p class="trophies">100 Trofeos</p>
-        </div>
+    <div class="ranking-item">
+      <img src="/assets/images/dashboard/perfil.png" class="avatar" />
+      <p class="position"
+         [ngStyle]="{'font-family': getFont(customFonts.IMPACT)}">
+        2° - Jorge Armando
+      </p>
+      <p class="trophies"
+         [ngStyle]="{'font-family': getFont(customFonts.IMPACT)}">
+        150 Trofeos
+      </p>
+    </div>
 
-        <div class="ranking-item">
-          <img src="/Assets\Images\Dashboard\perfil.png" class="avatar" />
-          <p class="position">4° - Jorge</p>
-          <p class="trophies">80 Trofeos</p>
-        </div>
+    <div class="ranking-item">
+      <img src="/assets/images/dashboard/perfil.png" class="avatar" />
+      <p class="position"
+         [ngStyle]="{'font-family': getFont(customFonts.IMPACT)}">
+        3° - Jorge Armando
+      </p>
+      <p class="trophies"
+         [ngStyle]="{'font-family': getFont(customFonts.IMPACT)}">
+        100 Trofeos
+      </p>
+    </div>
 
-        <div class="ranking-item">
-          <img src="/Assets\Images\Dashboard\perfil.png" class="avatar" />
-          <p class="position">5° - Jorge</p>
-          <p class="trophies">50 Trofeos</p>
-        </div>
-      </div>
-    </section>
+    <div class="ranking-item">
+      <img src="/assets/images/dashboard/perfil.png" class="avatar" />
+      <p class="position"
+         [ngStyle]="{'font-family': getFont(customFonts.IMPACT)}">
+        4° - Jorge Armando
+      </p>
+      <p class="trophies"
+         [ngStyle]="{'font-family': getFont(customFonts.IMPACT)}">
+        80 Trofeos
+      </p>
+    </div>
+
+    <div class="ranking-item">
+      <img src="/assets/images/dashboard/perfil.png" class="avatar" />
+      <p class="position"
+         [ngStyle]="{'font-family': getFont(customFonts.IMPACT)}">
+        5° - Jorge Armando
+      </p>
+      <p class="trophies"
+         [ngStyle]="{'font-family': getFont(customFonts.IMPACT)}">
+        50 Trofeos
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
 
     <!-- RECUADRO CALENDARIO - INTERACTIVO -->
 <aside class="calendar-card">
