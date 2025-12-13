@@ -21,7 +21,7 @@
 .logo {
   width: 250px;
   height: auto;
-  max-width: 90%; /* evita que se salga en pantallas pequeñas */
+  max-width: 90%;
 }
 
 /* Título */
@@ -36,9 +36,9 @@
   font-weight: normal;
 
   text-shadow: 
-    0px 0px 4px #000,  /* leve difuminado oscuro */
-    2px 2px 0px #000,  /* borde sombra inferior */
-    -2px -2px 0px #000; /* borde sombra superior */
+    0px 0px 4px #000,
+    2px 2px 0px #000,
+    -2px -2px 0px #000;
 }
 
 /* Formulario general */
@@ -60,7 +60,7 @@
   font-weight: bold;
 }
 
-/* Inputs redondeados */
+/* Inputs y selects */
 .campo input,
 .campo select {
   width: 100%;
@@ -74,34 +74,45 @@
   appearance: none;
   box-sizing: border-box;
 
-  color: white; 
+  /* Color inicial */
+  color: #ff6a5c;
+
+  transition: color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Color interno (placeholder y texto por defecto del select) */
-.campo input::placeholder,
-.campo select::placeholder {
-  color: #ff6a5c;   /* rojo-naranja */
+/* Placeholder rojo-naranja */
+.campo input::placeholder {
+  color: #ff6a5c;
   opacity: 1;
 }
 
-/* Select sin valor seleccionado */
+/* CUANDO EL USUARIO ESCRIBE → TEXTO NEGRO */
+.campo input:not(:placeholder-shown) {
+  color: #000;
+}
+
+/* Select sin seleccionar */
 .campo select {
-  color: #ff6a5c; 
+  color: #ff6a5c;
+}
+
+/* Select con opción elegida → TEXTO NEGRO */
+.campo select:valid {
+  color: #000;
 }
 
 /* Opciones del menú */
 .campo select option {
-  color: black; 
+  color: black;
 }
 
-/* Flecha personalizada del select con color rojo-naranja */
+/* Flecha personalizada del select */
 .campo select {
   background-image: url("data:image/svg+xml;utf8,<svg fill='%23ff6a5c' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
   background-repeat: no-repeat;
   background-position: right 20px center;
   background-size: 22px;
   cursor: pointer;
-  color: #ff6a5c; /* texto del select */
 }
 
 /* Botón */
@@ -117,12 +128,9 @@
   letter-spacing: 1px;
 
   background-color: #FF0000;
-
   border: none;
   border-radius: 40px;
-
   text-shadow: none;
-
   box-shadow: 0px 0px 12px rgba(0,0,0,0.4);
 
   transition: 0.2s;
@@ -133,10 +141,11 @@
   background-color: #ff3030; 
 }
 
+/* Responsive */
 @media (max-width: 500px) {
   .btn-registro {
-    width: 100%;      /* Se adapta al ancho */
-    font-size: 24px;  /* Solo reduce tamaño */
+    width: 100%;
+    font-size: 24px;
     padding: 14px 30px;
   }
 }
