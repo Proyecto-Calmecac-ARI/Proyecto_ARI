@@ -323,3 +323,22 @@ body {
   background: #bfbfbf;
   border-radius: 12px;
 }
+
+/*  AJUSTE TIPOGRÁFICO RANKING */
+/* Título Ranking de usuarios */
+.title {
+  font-size: 2.4rem;     
+  font-weight: 800;
+}
+
+/* Nombre del usuario */
+.position {
+  font-size: 1.2rem;     
+  font-weight: 600;
+}
+
+/* Trofeos (más grandes que el nombre) */
+.trophies {
+  font-size: 1.7rem;     
+  font-weight: 1000;      
+}
