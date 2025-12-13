@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CustomFonts } from '../../enums/fonts.enum';
+import { getFont } from '../../utils/font.util';
+
 
 @Component({
   selector: 'app-dasboard-medium',
@@ -10,6 +13,8 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './dasboard-medium.scss',
 })
 export class DasboardMedium implements OnInit {
+  customFonts = CustomFonts; 
+  getFont = getFont;
 
   /* DATOS BASE */
   weekDays = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
