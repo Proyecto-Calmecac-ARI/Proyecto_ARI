@@ -10,6 +10,7 @@ export interface UserInterface {
   apellidosUsuario?: string;
   edad?: number;
   estaturaCm?: number;
+  peso?: number;
   tipoCuerpo?: string;
   objetivo?: string;
   frecuenciaAsistencia?: number;
