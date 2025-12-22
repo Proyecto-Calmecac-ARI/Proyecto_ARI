@@ -3,15 +3,19 @@
   <div class="content">
     <img src="/assets/images/login/Fit manager.png" class="title-image" />
     <div class="form-box">
-      <input type="email" placeholder="Ingresa tu correo" [ngStyle]="{ 'font-family': getFont(customFonts.K2D_REGULAR)}"/>
-      <input type="password" placeholder="Ingresa tu contraseña" [ngStyle]="{ 'font-family': getFont(customFonts.K2D_REGULAR)}"/>
-      <span class="forgot" [ngStyle]="{ 'font-family': getFont(customFonts.K2D_REGULAR)}">Olvide mi contraseña</span>
-      <button class="btn register" [ngStyle]="{ 'font-family': getFont(customFonts.IMPACT)}">Registrarme</button>
-      <button class="btn login" [ngStyle]="{ 'font-family': getFont(customFonts.IMPACT)}">Iniciar sesión</button>
+      <input type="email" [(ngModel)]="correo" placeholder="Ingresa tu correo"
+        [ngStyle]="{ 'font-family': getFont(customFonts.K2D_REGULAR)}" />
+      <input type="password" [(ngModel)]="contrasena" placeholder="Ingresa tu contraseña"
+        [ngStyle]="{ 'font-family': getFont(customFonts.K2D_REGULAR)}" />
+      <!--<span class="forgot" [ngStyle]="{ 'font-family': getFont(customFonts.K2D_REGULAR)}">Olvide mi contraseña</span>-->
+      <button class="btn register" [ngStyle]="{ 'font-family': getFont(customFonts.IMPACT)}"
+        (click)="register()">Registrarme</button>
+      <button class="btn login" [ngStyle]="{ 'font-family': getFont(customFonts.IMPACT)}" (click)="login()">Iniciar
+        sesión</button>
     </div>
   </div>
-  <div class="footer">
+  <div class="footer" (click)="scrollAPlanes()">
     <p [ngStyle]="{ 'font-family': getFont(customFonts.K2D_REGULAR)}">Conoce nuestros planes</p>
     <span class="arrow">▼</span>
-  </div>
+  </div>
 </div>
