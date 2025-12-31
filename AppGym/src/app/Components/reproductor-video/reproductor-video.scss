@@ -2,7 +2,6 @@
 * {
   box-sizing: border-box;
 }
-
 /* DOCUMENTO BASE */
 html,
 body {
@@ -10,7 +9,6 @@ body {
   margin: 0;
   background-color: #000; /* Fondo negro para eliminar espacios blancos */
 }
-
 /* CONTENEDOR PRINCIPAL - CORREGIDO */
 .video-container {
   max-width: 1000px;
@@ -25,7 +23,6 @@ body {
   overflow: hidden;
   min-height: 100vh; /* Asegura que ocupe al menos toda la pantalla */
 }
-
 /* HEADER - MEJORADO */
 .video-header {
   display: flex;
@@ -33,7 +30,6 @@ body {
   gap: 1rem;
   flex-shrink: 0; /* Evita que se encoja */
 }
-
 /* BOTÓN MENÚ */
 .menu-btn {
   width: 55px;
@@ -50,7 +46,6 @@ body {
   z-index: 100;
   position: relative;
 }
-
 /* ÍCONOS BOTÓN MENÚ */
 .menu-btn span {
   width: 18px;
@@ -58,17 +53,14 @@ body {
   background: #ff0000;
   border-radius: 2px;
 }
-
 /* BARRA DE PROGRESO */
 .progress-wrapper {
   flex: 1;
 }
-
 .progress-wrapper input[type="range"] {
   width: 100%;
   accent-color: #12E800;
 }
-
 /* CRONÓMETRO */
 .timer {
   display: flex;
@@ -77,30 +69,25 @@ body {
   text-align: right;       
   min-width: 120px;        
 }
-
 /* TIEMPO */
 .time {
   font-size: 1.4rem;
   font-weight: 400;
   color: #FF6C00;
 }
-
 /* TEXTO ETIQUETA Progreso y cronometro*/
 .label {
   font-size: 1.5rem;
   font-weight: 500;
 }
-
 /* COLOR VERDE */
 .green {
   color: #12E800;
 }
-
 /* COLOR NARANJA */
 .orange {
   color: #FF6C00;
 }
-
 /* CONTENEDOR VIDEO  */
 .video-box {
   position: relative;
@@ -112,14 +99,12 @@ body {
   flex-grow: 1; /* Ocupa espacio disponible */
   min-height: 0; /* Permite que se ajuste */
 }
-
 video {
   width: 100%;
   height: 100%;
   object-fit: contain;
   background: #000;
 }
-
 /* BOTÓN PLAY */
 .play-btn {
   position: absolute;
@@ -146,13 +131,11 @@ video {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
-
 /* Efecto hover para botón play */
 .play-btn:hover {
   transform: translate(-50%, -50%) scale(1.05);
   background: rgb(220, 0, 0); 
 }
-
 /* FOOTER - MEJORADO */
 .video-footer {
   display: flex;
@@ -160,21 +143,18 @@ video {
   align-items: center;
   flex-shrink: 0; /* NUEVO: Evita que se encoja */
 }
-
 /* TÍTULO */
 .info h3 {
   margin: 0;
   font-size: 1.6rem;
   font-weight: 700;
 }
-
 /* DESCRIPCIÓN */
 .info p {
   margin: 0;
   font-size: 1.3rem;
   color: #ccc;
 }
-
 /* BOTÓN TERMINAR */
 .end-btn {
   background: #ffffff;
@@ -186,7 +166,6 @@ video {
   font-size: 1.4rem;
   cursor: pointer;
 }
-
 /* OVERLAY PARA CERRAR MENÚ */
 .menu-overlay {
   position: fixed;
@@ -199,7 +178,6 @@ video {
   animation: fadeIn 0.3s ease;
   display: block;
 }
-
 /* CONTENEDOR DEL MENÚ LATERAL */
 .side-menu {
   position: absolute;
@@ -213,12 +191,10 @@ video {
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden; 
 }
-
 /* CLASE PARA MOSTRAR EL MENÚ */
 .side-menu.open {
   transform: translateX(0);
 }
-
 /* ANIMACIÓN PARA EL OVERLAY */
 @keyframes fadeIn {
   from {
@@ -228,7 +204,6 @@ video {
     opacity: 1;
   }
 }
-
 /* PANTALLAS MEDIANAS (Tablets) - 601px a 1024px */
 @media (min-width: 601px) and (max-width: 1024px) {
   .video-container {

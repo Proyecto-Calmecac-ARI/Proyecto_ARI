@@ -105,7 +105,6 @@ formatTime(seconds: number): string {
   return `${h}:${m}:${s}`;
 }
 
-
   /* TERMINAR VIDEO */
   endVideo() { 
     const video = this.videoRef.nativeElement;
