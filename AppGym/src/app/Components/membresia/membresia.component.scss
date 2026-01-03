@@ -173,7 +173,6 @@ input {
    padding-top: 5px;
 }
 
-
 .topbar-left {
   display: flex;
   align-items: center;
@@ -219,15 +218,14 @@ html, body {
   max-width: 130px;
 }
 
-
 @media (max-width: 650px) {
 
-  /* ===== Layout general ===== */
+  /* Layout general  */
   .page-background {
     padding: 0px 15px;
   }
 
-  /* ===== Topbar ===== */
+  /* Topbar */
   .topbar {
     width: 100%;
     display: flex;
@@ -240,7 +238,7 @@ html, body {
     flex-shrink: 0;
   }  
 
-  /* ===== Usuario ===== */
+  /* Usuario */
   .username {
     max-width: 90px;
     font-size: 14px;
@@ -249,7 +247,7 @@ html, body {
     text-overflow: ellipsis;
   }
 
-  /* ===== Título ===== */
+  /* Título */
   .title {
     margin-left: 10px;
     font-size: 32px;
