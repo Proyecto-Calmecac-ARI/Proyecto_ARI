@@ -1,9 +1,7 @@
 <div class="page-container">
   <div class="content">
-
     <!-- Si no tiene plan -->
     <app-membresia *ngIf="!tienePlan"></app-membresia>
-
     <!-- Si ya tiene plan -->
     <ng-container *ngIf="tienePlan">
       <app-header-dasboard></app-header-dasboard>
@@ -11,6 +9,5 @@
       <app-dasboard-medium></app-dasboard-medium>
       <app-dasboard-down></app-dasboard-down>
     </ng-container>
-
   </div>
 </div>
