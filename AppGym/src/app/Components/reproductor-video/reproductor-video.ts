@@ -38,7 +38,6 @@ export class ReproductorVideo {
       this.togglePlay();
     }
   }
-
   /* PLAY / PAUSE Se ejecuta al hacer click en el video o botones */
   togglePlay() {
   const video = this.videoRef.nativeElement;
@@ -55,25 +54,21 @@ export class ReproductorVideo {
     this.isPlaying = false;
   }
 }
-
   /* ACTUALIZA EL TIEMPO ACTUAL */
   updateTime() {
   const video = this.videoRef.nativeElement;
   this.currentTime = video.currentTime;
   this.duration = video.duration;
 }
-
   /* OBTIENE LA DURACIÓN TOTAL DEL VIDEO */
   setDuration() {
   const video = this.videoRef.nativeElement;
   this.duration = isNaN(video.duration) ? 0 : video.duration;
 }
-
   /* MOVER VIDEO DESDE LA BARRA DE PROGRESO */
   seekVideo() {
     this.videoRef.nativeElement.currentTime = this.currentTime;
   }
-
   /* PANTALLA COMPLETA */
   toggleFullscreen() {
     const video = this.videoRef.nativeElement;
@@ -83,13 +78,11 @@ export class ReproductorVideo {
       document.exitFullscreen();
     }
   }
-
   /* TIEMPO RESTANTE (GETTER) */
   get remainingTime(): string {
   if (!this.duration) return '0:00';
   return this.formatTime(this.duration - this.currentTime);
 }
-
   /* FORMATO DE TIEMPO hh:mm:ss */
 formatTime(seconds: number): string {
   if (isNaN(seconds)) return '00:00:00';
@@ -104,7 +97,6 @@ formatTime(seconds: number): string {
 
   return `${h}:${m}:${s}`;
 }
-
   /* TERMINAR VIDEO */
   endVideo() { 
     const video = this.videoRef.nativeElement;
@@ -112,5 +104,12 @@ formatTime(seconds: number): string {
     video.currentTime = 0;
     this.isPlaying = false;
     alert('Video terminado');
+  }
+  /* VIDEO TERMINADO - REPRODUCIR AUTOMÁTICAMENTE DE NUEVO */
+  onVideoEnded(): void {
+    const video = this.videoRef.nativeElement;
+    video.currentTime = 0;
+    video.play();
+    this.isPlaying = true;
   }
 }
