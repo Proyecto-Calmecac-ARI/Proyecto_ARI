@@ -135,10 +135,8 @@ export class MembresiaComponent {
   logout(): void {
   // Limpia el usuario actual
   this.userService.usuarioActual = null;
-
   // Reemplaza la URL para que no se pueda volver atrás
   this.location.replaceState('/login');
-
   // Navega al login
   this.router.navigate(['/login']);
 }
