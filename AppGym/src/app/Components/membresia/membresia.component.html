@@ -47,8 +47,12 @@
         <input type="text" [ngStyle]="{ 'font-family': getFont(CustomFonts.K2D_REGULAR) }" [(ngModel)]="formData.name"
           placeholder="Ingresa tu nombre completo">
         <label>Número de tarjeta:</label>
-        <input type="text" [ngStyle]="{ 'font-family': getFont(CustomFonts.K2D_REGULAR) }" [value]="cardNumberMasked"
-          (input)="onCardInput($event)" maxlength="19" placeholder="Ingresa tu número de tarjeta">
+        <div class="card-input-container" [class.has-card]="cardType !== null">
+          <input type="text" [ngStyle]="{ 'font-family': getFont(CustomFonts.K2D_REGULAR) }"
+            (input)="onCardInput($event)" placeholder="Ingresa tu número de tarjeta">
+          <img *ngIf="cardType === 'visa'" src="/assets/images/membresia/visa.png" class="card-icon">
+          <img *ngIf="cardType === 'mastercard'" src="/assets/images/membresia/mastercard.png" class="card-icon">
+        </div>
         <div class="row">
           <div class="column">
             <label>Fecha de expiración</label>
@@ -57,8 +61,22 @@
           </div>
           <div class="column" [ngStyle]="{ 'font-family': getFont(CustomFonts.K2D_REGULAR) }">
             <label>CVV</label>
-            <input type="text" [ngStyle]="{ 'font-family': getFont(CustomFonts.K2D_REGULAR) }"
-              [(ngModel)]="formData.cvv" (input)="onCvvInput($event)" maxlength="3" placeholder="CVV">
+            <div style="display:flex; gap:10px; align-items:center;">
+              <input type="text" [ngStyle]="{ 'font-family': getFont(CustomFonts.K2D_REGULAR) }"
+                [(ngModel)]="formData.cvv" (input)="onCvvInput($event)" maxlength="3" placeholder="CVV">
+              <button type="button" class="btn-help" (click)="mostrarAyudaCvv = true">
+                ?
+              </button>
+            </div>
+          </div>
+          <!-- Modal ayuda CVV -->
+          <div *ngIf="mostrarAyudaCvv" class="cvv-modal-backdrop">
+            <div class="cvv-modal">
+              <h3>¿Dónde encontrar el CVV?</h3>
+              <img src="/assets/images/membresia/cvv-ejemplo.png" alt="Ejemplo CVV">
+              <p>El CVV es el número de 3 dígitos que está en la parte de atrás de tu tarjeta.</p>
+              <button (click)="mostrarAyudaCvv = false">Entendido</button>
+            </div>
           </div>
         </div>
         <div class="buttons">
