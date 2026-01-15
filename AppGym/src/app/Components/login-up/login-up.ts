@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Location } from '@angular/common';
 import { CustomFonts } from '../../enums/fonts.enum';
 import { getFont } from '../../utils/font.util';
+import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { UserService } from '../../Services/UserService';
 import { UserInterface } from '../../../interfaces/UserInterface';
-
 @Component({
   selector: 'app-login-up',
   imports: [CommonModule, FormsModule],
@@ -15,45 +13,31 @@ import { UserInterface } from '../../../interfaces/UserInterface';
   styleUrl: './login-up.scss',
 })
 export class LoginUp {
-
-  // Enumeración y función para manejar tipografías 
   customFonts = CustomFonts;
   getFont = getFont;
-  // Variables ligadas al formulario de login
   correo: string = '';
   contrasena: string = '';
-  // Inyección de servicios necesarios:
-  constructor(
-    private userService: UserService, // - UserService: manejo de usuarios
-    private router: Router, // - Router: navegación entre vistas
-    private location: Location // - Location: control del historial de navegación
-  ) { }
-  // Método para iniciar sesión
+  constructor(private userService: UserService, private router: Router) {}
   login() {
-    // Validación de campos vacíos
+    // Validación campos vacíos
     if (!this.correo || !this.contrasena) {
       alert('Debes llenar todos los campos');
       return;
     }
-    // Validación de formato de correo electrónico
+    // Correo inválido
     if (!this.isValidCorreo(this.correo)) {
       alert('Ingresa un correo electrónico válido');
       return;
     }
-    // Buscar usuario en el servicio
-    const usuario = this.userService.buscarUsuario(
-      this.correo,
-      this.contrasena
-    );
-    // Usuario no encontrado
+    const usuario = this.userService.buscarUsuario(this.correo, this.contrasena);
+    //  Usuario no existe
     if (!usuario) {
-      alert('El usuario no existe, debes registrarte');
+      alert('contrasena invalida');
       return;
     }
-    // Validar si el plan está vencido
+    // Validar vencimiento del plan
     if (usuario.planActivo && usuario.fechaExpiracionPlan) {
       const today = new Date();
-
       if (today > usuario.fechaExpiracionPlan) {
         alert(
           'Error, detectamos que no has renovado tu membresía, por favor renuévala y vuelve a entrar.'
@@ -61,34 +45,30 @@ export class LoginUp {
         return;
       }
     }
-    // Guardar usuario como usuario actual
+    // Guardar usuario global
     this.userService.guardarUsuarioActual(usuario);
-    // Redirigir al dashboard
+    // Redirecciones
     this.router.navigate(['/dashboard']);
   }
-  // Método para registrar un nuevo usuario
   register() {
-    // Validación de campos vacíos
+    // Campos vacíos
     if (!this.correo || !this.contrasena) {
       alert('Debes llenar todos los campos');
       return;
     }
-    // Validación de formato de correo
+    // Correo inválido
     if (!this.isValidCorreo(this.correo)) {
       alert('Ingresa un correo electrónico válido');
       return;
     }
-    // Buscar si el usuario ya existe
-    const usuario = this.userService.buscarUsuario(
-      this.correo,
-      this.contrasena
-    );
-    // Usuario ya registrado
+    // Buscar usuario existente
+    const usuario = this.userService.buscarUsuario(this.correo, this.contrasena);
+    //  Si ya existe
     if (usuario) {
       alert('El usuario existe, debes iniciar sesión');
       return;
     }
-    // Crear objeto de usuario con datos iniciales
+    // Crear nuevo usuario (registro inicial)
     const nuevoUsuario: UserInterface = {
       correo: this.correo,
       contrasena: this.contrasena,
@@ -112,24 +92,19 @@ export class LoginUp {
       fechaCompraPlan: undefined,
       fechaExpiracionPlan: undefined,
     };
-    // Guardar usuario en el arreglo global
+    // Guardar en arreglo global
     this.userService.agregarUsuario(nuevoUsuario);
-    // Guardar como usuario actualmente logueado
+    // Guardar como usuario actual
     this.userService.guardarUsuarioActual(nuevoUsuario);
-    // Evita regresar al login y navega al formulario
-    this.location.replaceState('/formulario');
+    // Ir al formulario para completar perfil
     this.router.navigate(['/formulario']);
   }
-  // Hace scroll suave hacia la sección de planes
   scrollAPlanes() {
     const element = document.getElementById('planes');
     element?.scrollIntoView({ behavior: 'smooth' });
   }
-  // Valida el formato del correo electrónico
   isValidCorreo(correo: string): boolean {
-    const correoRegex =
-      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
+    const correoRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return correoRegex.test(correo);
   }
 }

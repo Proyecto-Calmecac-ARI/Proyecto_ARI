@@ -7,11 +7,11 @@
         [ngStyle]="{ 'font-family': getFont(customFonts.K2D_REGULAR)}" />
       <input type="password" [(ngModel)]="contrasena" placeholder="Ingresa tu contraseña"
         [ngStyle]="{ 'font-family': getFont(customFonts.K2D_REGULAR)}" />
-      <!--<span class="forgot" [ngStyle]="{ 'font-family': getFont(customFonts.K2D_REGULAR)}">Olvide mi contraseña</span>-->
-      <button class="btn register" [ngStyle]="{ 'font-family': getFont(customFonts.IMPACT)}"
-        (click)="register()">Registrarme</button>
+      <span class="forgot" [ngStyle]="{ 'font-family': getFont(customFonts.K2D_REGULAR)}">Olvide mi contraseña</span>
       <button class="btn login" [ngStyle]="{ 'font-family': getFont(customFonts.IMPACT)}" (click)="login()">Iniciar
         sesión</button>
+      <button class="btn register" [ngStyle]="{ 'font-family': getFont(customFonts.IMPACT)}"
+        (click)="register()">Registrarme</button>
     </div>
   </div>
   <div class="footer" (click)="scrollAPlanes()">
