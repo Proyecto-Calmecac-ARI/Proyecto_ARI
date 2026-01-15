@@ -10,8 +10,8 @@
     <div class="profile-icon"></div>
 
     <div class="perfil-info">
-      <h3 class="profile-name" [ngStyle]="{ 'font-family': getFont(CustomFonts.IMPACT)}">Ivan Carmona</h3>
-      <span class="profile-role" [ngStyle]="{ 'font-family': getFont(CustomFonts.K2D_REGULAR)}">EliteAthlete</span>
+      <h3 class="profile-name" [ngStyle]="{ 'font-family': getFont(CustomFonts.IMPACT)}">{{ this.userActual?.nombreUsuario ?? ""}}</h3>
+      <span class="profile-role" [ngStyle]="{ 'font-family': getFont(CustomFonts.K2D_REGULAR)}">{{ (this.userActual?.planAsociado?.nombrePlan ?? "").replace('Plan ','') }}</span>
     </div>
   </div>
 
