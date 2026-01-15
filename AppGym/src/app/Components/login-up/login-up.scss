@@ -124,6 +124,7 @@ $color-green: #12E800;
   p {
     margin: 0;
     font-size: 1.1rem;
+    animation: bounce 1.5s infinite ease-in-out;
   }
   .arrow {
     font-size: 1rem;
@@ -131,7 +132,7 @@ $color-green: #12E800;
     animation: bounce 1.5s infinite ease-in-out;
   }
 }
-/*Animacion del salto de flecha*/
+/*Animacion del salto de la flecha y texto de los planes*/
 @keyframes bounce {
   0% {
     transform: translateY(0);
