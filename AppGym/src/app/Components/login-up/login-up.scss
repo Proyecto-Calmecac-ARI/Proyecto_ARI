@@ -89,11 +89,11 @@ $color-green: #12E800;
     cursor: pointer;
     border: none;
     &.register {
-      background: $color-red;
-      color: $color-white;
+      background: transparent;
+      color: $color-white; 
     }
     &.login {
-      background: transparent;
+      background: $color-red;
       color: $color-white;
     }
   }
