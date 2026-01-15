@@ -23,12 +23,12 @@ export class MembresiaComponent {
   selectedPlan: string | null = null;
   // Inyección del servicio de usuarios para acceder y actualizar //
   // la información del usuario actual y del arreglo global //
- constructor(
-  private userService: UserService,
-  private router: Router,
-  private location: Location
-) {}
-  // Devuelve siempre el usuario actual desde el servicio
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private location: Location
+  ) { }
+  // Devuelve siempre el usuario actual desde el servicio //
   get usuarioActual() {
     return this.userService.usuarioActual;
   }
@@ -60,6 +60,10 @@ export class MembresiaComponent {
     expiration: '',
     cvv: ''
   };
+  // Tipo de tarjeta detectada (visa / mastercard)
+  cardType: 'visa' | 'mastercard' | null = null;
+  // Controla si se muestra la ayuda del CVV
+  mostrarAyudaCvv: boolean = false;
   // Asigna el plan seleccionado cuando el usuario da clic en contratar //
   selectPlan(planId: string) {
     this.selectedPlan = planId;
@@ -68,9 +72,11 @@ export class MembresiaComponent {
   cancel() {
     this.selectedPlan = null;
     this.formData = { name: '', cardNumber: '', expiration: '', cvv: '' };
+    this.cardType = null;
+    this.mostrarAyudaCvv = false;
   }
   // Validaciones antes de procesar el pago //
-  // Valida que el nombre solo contenga letras y espacios
+  // Valida que el nombre solo contenga letras y espacios //
   isNameValid(name: string): boolean {
     return /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(name.trim());
   }
@@ -108,8 +114,30 @@ export class MembresiaComponent {
   // y limitando la longitud a 16 dígitos //
   onCardInput(event: Event) {
     const input = event.target as HTMLInputElement;
-    input.value = input.value.replace(/\D/g, '').slice(0, 16);
-    this.formData.cardNumber = input.value;
+    let value = input.value.replace(/\D/g, '').slice(0, 19);
+    this.formData.cardNumber = value;
+    // Detectar tipo de tarjeta REAL
+    this.cardType = this.detectCardType(value);
+    // Mostrar formateado XXXX XXXX XXXX XXXX
+    input.value = value.replace(/(.{4})/g, '$1 ').trim();
+  }
+  detectCardType(cardNumber: string): 'visa' | 'mastercard' | null {
+    if (!cardNumber) return null;
+    // VISA: empieza con 4
+    if (/^4\d{0,18}$/.test(cardNumber)) {
+      return 'visa';
+    }
+    // MASTERCARD:
+    // 51–55 o 2221–2720
+    const firstTwo = Number(cardNumber.substring(0, 2));
+    const firstFour = Number(cardNumber.substring(0, 4));
+    if (
+      (firstTwo >= 51 && firstTwo <= 55) ||
+      (firstFour >= 2221 && firstFour <= 2720)
+    ) {
+      return 'mastercard';
+    }
+    return null;
   }
   // Devuelve el número de tarjeta con formato visual tipo XXXX XXXX XXXX XXXX //
   get cardNumberMasked(): string {
@@ -133,13 +161,13 @@ export class MembresiaComponent {
     this.formData.cvv = input.value;
   }
   logout(): void {
-  // Limpia el usuario actual
-  this.userService.usuarioActual = null;
-  // Reemplaza la URL para que no se pueda volver atrás
-  this.location.replaceState('/login');
-  // Navega al login
-  this.router.navigate(['/login']);
-}
+    // Limpia el usuario actual
+    this.userService.usuarioActual = null;
+    // Reemplaza la URL para que no se pueda volver atrás
+    this.location.replaceState('/login');
+    // Navega al login
+    this.router.navigate(['/login']);
+  }
   // Procesa el pago de la membresía //
   // Valida los datos ingresados y actualiza la información //
   // del usuario actual y del arreglo global de usuarios //
