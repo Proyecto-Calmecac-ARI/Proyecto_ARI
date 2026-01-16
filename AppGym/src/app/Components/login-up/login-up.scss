@@ -90,11 +90,19 @@ $color-green: #12E800;
     border: none;
     &.register {
       background: transparent;
-      color: $color-white; 
+      color: $color-white;
+      transition: transform 0.25s;
+    }
+    &.register:hover {
+      transform: translateY(-5px);
     }
     &.login {
       background: $color-red;
       color: $color-white;
+      transition: transform 0.25s;
+    }
+    &.login:hover {
+      transform: translateY(-5px);
     }
   }
 }
@@ -116,13 +124,26 @@ $color-green: #12E800;
   p {
     margin: 0;
     font-size: 1.1rem;
+    animation: bounce 1.5s infinite ease-in-out;
   }
   .arrow {
     font-size: 1rem;
     display: block;
-    animation: bounce 1.5s infinite;
+    animation: bounce 1.5s infinite ease-in-out;
   }
 }
+/*Animacion del salto de la flecha y texto de los planes*/
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+} 
 /* ===================================== */
 /* RESPONSIVE */
 /* ===================================== */
