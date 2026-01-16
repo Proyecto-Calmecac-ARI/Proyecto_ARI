@@ -117,7 +117,7 @@
   cursor: pointer;
 }
 
-/* Botón */
+/* Boton completar registro */
 .btn-registro {
   display: block;
   margin: 40px auto;
@@ -134,13 +134,23 @@
   border-radius: 40px;
   text-shadow: none;
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
-  transition: 0.2s;
+
+  /* Animación controlada */
+  transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .btn-registro:hover {
-  transform: scale(1.05);
-  background-color: #ff3030;
+  transform: scale(1.1);
+  /* crecimiento más visible */
+  background-color: #bf0000;
+  box-shadow: 0px 0px 30px rgba(255, 48, 48, 0.6);
 }
+
+/* Animación al hacer click  */
+.btn-registro:active {
+  transform: scale(1.05);
+}
+
 
 /* Responsive */
 @media (max-width: 500px) {
