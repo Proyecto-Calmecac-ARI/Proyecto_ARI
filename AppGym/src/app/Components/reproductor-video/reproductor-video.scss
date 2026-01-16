@@ -52,6 +52,24 @@ body {
   cursor: pointer;
   z-index: 100;
   position: relative;
+
+  //animaciones para el boton menu
+   transition: 
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.menu-btn:hover {
+  transform: scale(1.12);
+  background-color: #ff0000; /* se vuelve rojo */
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.6);
+}
+
+/* Íconos del menú en hover */
+.menu-btn:hover span {
+  background: #ffffff; /* líneas blancas */
+  transition: background 0.25s ease;
 }
 
 /* ÍCONOS BOTÓN MENÚ */
@@ -67,6 +85,11 @@ body {
   flex: 1;
 }
 
+.progress-wrapper .label {
+  animation: textBounce 1.7s ease-in-out infinite;
+  display: inline-block;
+}
+
 .progress-wrapper input[type="range"] {
   width: 100%;
   accent-color: #12E800;
@@ -79,6 +102,11 @@ body {
   align-items: flex-end;
   text-align: right;
   min-width: 120px;
+}
+
+.timer .label {
+  animation: textBounce 1.9s ease-in-out infinite;
+  display: inline-block;
 }
 
 /* TIEMPO */
@@ -173,6 +201,8 @@ video {
 /* TÍTULO */
 .info {
   padding-left: 0.5rem;
+  animation: textBounce 2.6s ease-in-out infinite;
+
 }
 
 .info h3 {
@@ -198,7 +228,21 @@ video {
   font-weight: 600;
   font-size: 1.4rem;
   cursor: pointer;
+
+  //animaciones para el boton terminar
+   transition: 
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease;
 }
+
+.end-btn:hover {
+  transform: scale(1.08);
+  background-color: #ff0000; /* fondo rojo */
+  color: #ffffff;            /* texto blanco */
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+  }
 
 /* OVERLAY PARA CERRAR MENÚ */
 .menu-overlay {
@@ -230,6 +274,16 @@ video {
 /* CLASE PARA MOSTRAR EL MENÚ */
 .side-menu.open {
   transform: translateX(0);
+}
+
+@keyframes timerBounce {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
+}
+
+.time {
+  animation: timerBounce 1.3s ease-in-out infinite;
 }
 
 /* ANIMACIÓN PARA EL OVERLAY */
@@ -343,11 +397,15 @@ video {
     /* Reduce tamaño de fuente */
     text-align: center;
     /* Centra texto */
+
+  animation: textBounce 2s ease-in-out infinite;
+
   }
 
   .info p {
     font-size: 1.1rem;
     text-align: center;
+    
   }
 
   .end-btn {
@@ -453,4 +511,10 @@ video {
     /* menos separación lateral */
     padding-right: 20px;
   }
+}
+
+@keyframes textBounce {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
 }
