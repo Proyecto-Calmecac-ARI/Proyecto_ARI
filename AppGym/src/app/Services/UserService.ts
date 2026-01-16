@@ -94,9 +94,16 @@ export class UserService {
             asistencias: [
                 {
                     fechaAsistencia: undefined,
-                    dia: 1,
+                    dia: 14,
                     mes: 0,
-                    anio: 2025,
+                    anio: 2026,
+                    tiempoCronometroSegundos: 1000,
+                },
+                {
+                    fechaAsistencia: undefined,
+                    dia: 15,
+                    mes: 0,
+                    anio: 2026,
                     tiempoCronometroSegundos: 1000,
                 },
             ],
