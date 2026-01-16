@@ -114,7 +114,7 @@ export class MembresiaComponent {
   // y limitando la longitud a 16 dígitos //
   onCardInput(event: Event) {
     const input = event.target as HTMLInputElement;
-    let value = input.value.replace(/\D/g, '').slice(0, 19);
+    let value = input.value.replace(/\D/g, '').slice(0, 16);
     this.formData.cardNumber = value;
     // Detectar tipo de tarjeta REAL
     this.cardType = this.detectCardType(value);
