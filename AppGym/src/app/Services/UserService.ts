@@ -20,7 +20,7 @@ export class UserService {
             tipoAlimentacion: 'Flexible / Sin plan especifico',
             frecuenciaCardiaca: undefined,
             oxigenacion: undefined,
-            trofeos: 0,
+            trofeos: 50,
             caloriasQuemadas: undefined,
             planActivo: false,
             rutinaActiva: undefined,
@@ -76,7 +76,7 @@ export class UserService {
             tipoAlimentacion: 'Flexible / Sin plan especifico',
             frecuenciaCardiaca: 123,
             oxigenacion: 86,
-            trofeos: 100,
+            trofeos: 200,
             caloriasQuemadas: 2000,
             planActivo: true,
             rutinaActiva: {

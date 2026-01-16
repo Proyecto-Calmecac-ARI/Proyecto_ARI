@@ -3,87 +3,50 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CustomFonts } from '../../enums/fonts.enum';
 import { getFont } from '../../utils/font.util';
+import { UserService } from '../../Services/UserService';
+import { UserInterface } from '../../../interfaces/UserInterface';
 import { AsistenciasInterface } from '../../../interfaces/AsistenciasInterface';
-/* INTERFAZ PARA USUARIOS DEL RANKING */
+
+/* MODELO PARA MOSTRAR EL RANKING */
 interface RankingUser {
   position: number;
   name: string;
   trophies: number;
 }
-/* INTERFAZ PARA CELDAS DEL CALENDARIO */
+
+/* MODELO PARA CELDAS DEL CALENDARIO */
 interface CalendarCell {
   day?: number;
   date?: Date;
 }
+
 @Component({
-  /* SELECTOR DEL COMPONENTE */
   selector: 'app-dasboard-medium',
-
-  /* COMPONENTE STANDALONE */
   standalone: true,
-
-  /* MODULOS UTILIZADOS */
   imports: [CommonModule, FormsModule],
-
-  /* ARCHIVOS DEL COMPONENTE */
   templateUrl: './dasboard-medium.html',
   styleUrl: './dasboard-medium.scss',
 })
 export class DasboardMedium implements OnInit {
 
-  /* FUENTES PERSONALIZADAS */
+  /* FUENTES PERSONALIZADAS (YA EXISTENTES) */
   customFonts = CustomFonts;
   getFont = getFont;
 
-  // asi se van a poner se debe de poner de acuerdo con la persona que guardara los datos en el reproductor por que el 
-  // mes debe de ser uno antes del actual si es diciembre se debe de guardar 11 y si es enero 0
-  // 0 → Enero
-  // 11 → Diciembre
-  asistencias: AsistenciasInterface[] = [
-  {
-    fechaAsistencia: new Date(2025, 11, 21),
-    dia: 21,
-    mes: 11,
-    anio: 2025,
-    tiempoCronometroSegundos: 25
-  },
-  {
-    fechaAsistencia: new Date(2025, 11, 20),
-    dia: 20,
-    mes: 11,
-    anio: 2025,
-    tiempoCronometroSegundos: 10
-  },
-  {
-    fechaAsistencia: new Date(2025, 11, 22),
-    dia: 22,
-    mes: 11,
-    anio: 2025,
-    tiempoCronometroSegundos: 10
-  },
-  {
-    fechaAsistencia: new Date(2025, 11, 23),
-    dia: 23,
-    mes: 11,
-    anio: 2025,
-    tiempoCronometroSegundos: 10
-  }
-];
-  /* RANKING DE USUARIOS */
-  rankingUsers: RankingUser[] = [
-    { position: 1, name: 'Jorge Armando', trophies: 200 },
-    { position: 2, name: 'Jorge Armando', trophies: 150 },
-    { position: 3, name: 'Jorge Armando', trophies: 100 },
-    { position: 4, name: 'Jorge Armando', trophies: 80 },
-    { position: 5, name: 'Jorge Armando', trophies: 50 },
-  ];
-  /* DATOS BASE DEL CALENDARIO */
+  /* RANKING DE USUARIOS (SE MUESTRA EN EL HTML) */
+  rankingUsers: RankingUser[] = [];
+
+  /* USUARIO ACTUAL (DESDE USER SERVICE) */
+  usuarioActual: UserInterface | null = null;
+
+  /* DATOS BASE DEL CALENDARIO (SIN CAMBIOS) */
   weekDays = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
+
   monthNames = [
     'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
     'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
   ];
-  /* ESTADO DEL CALENDARIO */
+
   currentYear!: number;
   currentMonth!: number;
   selectedDate: Date | null = null;
@@ -93,6 +56,9 @@ export class DasboardMedium implements OnInit {
   yearOptions: number[] = [];
   monthOptions = this.monthNames;
 
+  /* INYECCIÓN DEL USER SERVICE */
+  constructor(private userService: UserService) { }
+
   /* INIT DEL COMPONENTE */
   ngOnInit(): void {
     const today = new Date();
@@ -100,15 +66,43 @@ export class DasboardMedium implements OnInit {
     this.currentYear = today.getFullYear();
     this.currentMonth = today.getMonth();
 
-    /* GENERAR LISTA DE AÑOS */
+    /* LISTA DE AÑOS */
     for (let y = this.currentYear - 5; y <= this.currentYear + 5; y++) {
       this.yearOptions.push(y);
     }
 
+    /* OBTENER USUARIO ACTUAL (LOGIN / REGISTRO) */
+    this.usuarioActual = this.userService.usuarioActual;
+
+    /* GENERAR RANKING DESDE EL SERVICE */
+    this.generarRanking();
+
     this.generateCalendar();
   }
 
-  /* LOGICA DEL CALENDARIO */
+  /* LOGICA DE NEGOCIO - RANKING (CUMPLE EXACTO EL JIRA) */
+  generarRanking(): void {
+
+    /* OBTENER TODOS LOS USUARIOS */
+    const usuarios: UserInterface[] = this.userService.obtenerUsuarios();
+
+    /* ORDENAR POR TROFEOS DE MAYOR A MENOR */
+    const usuariosOrdenados = [...usuarios].sort(
+      (a, b) => (b.trofeos ?? 0) - (a.trofeos ?? 0)
+    );
+
+    /* TOMAR MAXIMO 5 USUARIOS */
+    const topUsuarios = usuariosOrdenados.slice(0, 5);
+
+    /* MAPEAR A LO QUE USA EL HTML */
+    this.rankingUsers = topUsuarios.map((usuario, index) => ({
+      position: index + 1,
+      name: `${usuario.nombreUsuario} ${usuario.apellidosUsuario}`,
+      trophies: usuario.trofeos ?? 0
+    }));
+  }
+
+  /* LOGICA DEL CALENDARIO (ORIGINAL) */
   generateCalendar(): void {
     this.calendarCells = [];
 
@@ -121,24 +115,20 @@ export class DasboardMedium implements OnInit {
       0
     ).getDate();
 
-    /* ESPACIOS VACIOS */
     for (let i = 0; i < startWeekDay; i++) {
       this.calendarCells.push(null);
     }
 
-    /* DIAS DEL MES */
     for (let d = 1; d <= daysInMonth; d++) {
       const date = new Date(this.currentYear, this.currentMonth, d);
       this.calendarCells.push({ day: d, date });
     }
 
-    /* COMPLETAR SEMANAS */
     while (this.calendarCells.length % 7 !== 0) {
       this.calendarCells.push(null);
     }
   }
 
-  /* NAVEGACION */
   prevMonth(): void {
     if (this.currentMonth === 0) {
       this.currentMonth = 11;
@@ -159,7 +149,6 @@ export class DasboardMedium implements OnInit {
     this.generateCalendar();
   }
 
-  /* SELECCION DE DIAS */
   selectDay(cell: CalendarCell | null): void {
     if (!cell || !cell.date) return;
     this.selectedDate = cell.date;
@@ -175,14 +164,24 @@ export class DasboardMedium implements OnInit {
     const today = new Date();
     return cell.date.toDateString() === today.toDateString();
   }
-// Función para saber si un día tiene asistencia
+
+  /* LOGICA DE ACTIVIDAD FISICA (USUARIO ACTUAL) */
   hasAttendance(cell: CalendarCell | null): boolean {
-  if (!cell || !cell.date) return false;
+    if (
+      !cell ||
+      !cell.day ||
+      !this.usuarioActual ||
+      !this.usuarioActual.asistencias
+    ) {
+      return false;
+    }
 
-  return this.asistencias.some(asistencia =>
-    asistencia.tiempoCronometroSegundos !== 0 &&
-    asistencia.fechaAsistencia!.toDateString() === cell.date!.toDateString()
-  );
-}
-
+    return this.usuarioActual.asistencias.some(
+      (asistencia: AsistenciasInterface) =>
+        (asistencia.tiempoCronometroSegundos ?? 0) > 0 &&
+        asistencia.dia === cell.day &&
+        asistencia.mes === this.currentMonth &&
+        asistencia.anio === this.currentYear
+    );
+  }
 }
