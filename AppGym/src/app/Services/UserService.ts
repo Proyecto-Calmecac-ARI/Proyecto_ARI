@@ -93,13 +93,32 @@ export class UserService {
             },
             asistencias: [
                 {
-                    fechaAsistencia: undefined,
+                    // Asistencia en 2025 (día 1)
+                    // NOTA: los meses en van de 0 a 11, 0 = Enero, 11 = Diciembre
                     dia: 1,
-                    mes: 0,
+                    mes: 0, // Enero
                     anio: 2025,
-                    tiempoCronometroSegundos: 1000,
+                    tiempoCronometroSegundos: 1000, // > 0  se marca como actividad 
+                    fechaAsistencia: undefined,
+                },
+                {
+                    // Asistencia en 2026
+                    dia: 14,
+                    mes: 0, // Enero
+                    anio: 2026,
+                    tiempoCronometroSegundos: 1000, // ROJO
+                    fechaAsistencia: undefined,
+                },
+                {
+                    // Asistencia en 2026
+                    dia: 15,
+                    mes: 0, // Enero
+                    anio: 2026,
+                    tiempoCronometroSegundos: 1000, // ROJO
+                    fechaAsistencia: undefined,
                 },
             ],
+
             planAsociado: {
                 nombrePlan: 'Plan EliteAthlete',
                 descripcionPlan:
