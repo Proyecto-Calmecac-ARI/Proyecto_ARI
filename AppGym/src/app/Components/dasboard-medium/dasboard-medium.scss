@@ -119,13 +119,17 @@ body {
   text-align: center;
   gap: 0.4rem;
 }
+/* ROJO: SIEMPRE TIENE PRIORIDAD */
 .days span.attendance {
   background: #ff0000;
   color: #fff;
   font-weight: 700;
 }
-.days .active {
+/* VERDE: SOLO SI ES HOY Y NO HUBO ASISTENCIA */
+.days span.active:not(.attendance) {
   background: #12E800;
+  color: #000;
+  font-weight: 700;
 }
 
 /* RESPONSIVE */
@@ -275,11 +279,11 @@ body {
   font-weight: 700;
 }
 /* DIA ACTUAL */
-.days span.active {
+/*.days span.active {
   background: #12E800; 
   color: #000;
   font-weight: 700;
-}
+}*/
 .days span.empty {
   cursor: default;
   background: transparent;
