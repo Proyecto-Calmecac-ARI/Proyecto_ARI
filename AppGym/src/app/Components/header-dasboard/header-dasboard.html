@@ -1,18 +1,21 @@
 
 <header class="header-container">
-    
   <div class="logo-text">
     <img src="/assets/images/membresia/FitManager.png" alt="perfil">
   </div>
-
-  
   <div class="profile-section">
     <div class="profile-icon"></div>
-
+      <!-- Contenedor principal de la información del perfil -->
     <div class="perfil-info">
+      <!-- Nombre del usuario -->
+      <!-- Se obtiene el usuario actual que inicio sesion y se pone su nombre en caso de que no se tenga
+       informacion se pondra vacio-->
       <h3 class="profile-name" [ngStyle]="{ 'font-family': getFont(CustomFonts.IMPACT)}">{{ this.userActual?.nombreUsuario ?? ""}}</h3>
+       <!-- Rol o plan asociado al usuario -->
+       <!-- Se obtiene el usuario actual y se obtiene el plan asociado,
+        posteriormente se elimina la palabra 'Plan ' del nombre del plan para solo dejar el nombre del
+        plan activo -->
       <span class="profile-role" [ngStyle]="{ 'font-family': getFont(CustomFonts.K2D_REGULAR)}">{{ (this.userActual?.planAsociado?.nombrePlan ?? "").replace('Plan ','') }}</span>
     </div>
   </div>
-
 </header>

@@ -32,7 +32,7 @@ export class LoginUp {
     const usuario = this.userService.buscarUsuario(this.correo, this.contrasena);
     //  Usuario no existe
     if (!usuario) {
-      alert('contrasena invalida');
+      alert('contraseña invalida, intenta de nuevo');
       return;
     }
     // Validar vencimiento del plan
