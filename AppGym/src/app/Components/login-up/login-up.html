@@ -19,3 +19,11 @@
     <span class="arrow">▼</span>
   </div>
 </div>
+<!-- ALERTA PERSONALIZADA -->
+<div class="alert-backdrop" *ngIf="mostrarAlerta">
+  <div class="alert-box">
+    <button class="close-btn" (click)="cerrarAlerta()">✕</button>
+    <p>{{ mensajeAlerta }}</p>
+    <button class="ok-btn" (click)="cerrarAlerta()">Aceptar</button>
+  </div>
+</div>
