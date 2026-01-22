@@ -61,15 +61,8 @@ body {
 }
 
 .menu-btn:hover {
-  transform: scale(1.12);
-  background-color: #ff0000; /* se vuelve rojo */
+  transform: scale(1.12); //crece un poco
   box-shadow: 0 0 12px rgba(255, 0, 0, 0.6);
-}
-
-/* Íconos del menú en hover */
-.menu-btn:hover span {
-  background: #ffffff; /* líneas blancas */
-  transition: background 0.25s ease;
 }
 
 /* ÍCONOS BOTÓN MENÚ */
@@ -84,7 +77,7 @@ body {
 .progress-wrapper {
   flex: 1;
 }
-
+//animacion al texto progreso
 .progress-wrapper .label {
   animation: textBounce 1.7s ease-in-out infinite;
   display: inline-block;
@@ -103,7 +96,7 @@ body {
   text-align: right;
   min-width: 120px;
 }
-
+//animacion de brinco para el cronometro
 .timer .label {
   animation: textBounce 1.9s ease-in-out infinite;
   display: inline-block;
@@ -181,7 +174,7 @@ video {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
-
+//animaciones del boton play
 /* Efecto hover para botón play */
 .play-btn:hover {
   transform: translate(-50%, -50%) scale(1.05);
@@ -201,6 +194,7 @@ video {
 /* TÍTULO */
 .info {
   padding-left: 0.5rem;
+  //animacion de la informacion video
   animation: textBounce 2.6s ease-in-out infinite;
 
 }
@@ -236,12 +230,9 @@ video {
     color 0.25s ease,
     box-shadow 0.25s ease;
 }
-
+//animacion de colores al inverso
 .end-btn:hover {
   transform: scale(1.08);
-  background-color: #ff0000; /* fondo rojo */
-  color: #ffffff;            /* texto blanco */
-  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
   }
 
 /* OVERLAY PARA CERRAR MENÚ */
@@ -275,7 +266,7 @@ video {
 .side-menu.open {
   transform: translateX(0);
 }
-
+//animacion de rebote para el tiempo
 @keyframes timerBounce {
   0%   { transform: translateY(0); }
   50%  { transform: translateY(-4px); }
@@ -512,7 +503,7 @@ video {
     padding-right: 20px;
   }
 }
-
+//animacion para los textos
 @keyframes textBounce {
   0%   { transform: translateY(0); }
   50%  { transform: translateY(-6px); }
