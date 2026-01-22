@@ -33,10 +33,12 @@
   border-radius: 20px;
   overflow: hidden;
   cursor: pointer;
+
+  //ANIMACION//
   transition: transform 0.25s ease;
   justify-content: center;
   
-  ///background: #520000;        /* 🔥 color restaurado */
+  ///background: #520000;        /*  color restaurado */
   
   display: flex;
   flex-direction: column;

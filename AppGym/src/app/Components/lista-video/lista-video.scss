@@ -50,6 +50,7 @@
   letter-spacing: 0.9px;
   transition: color 0.2s ease;
   margin-bottom: clamp(2px, 0.8vh, 6px);
+  
   //Animaciones para la lista de videos
   transition: 
     color 0.25s ease,
@@ -90,18 +91,15 @@
   font-size: clamp(14px, 4.5vw, 16px);
   font-weight: 500;
 
-    /* TRANSITION */
+  
   transition: 
     background-color 0.25s ease,
     color 0.25s ease,
     border-color 0.25s ease,
     transform 0.25s ease;
 }
-
+//animacion de colores inversos
 .cerrar:hover {
-  background: #ffffff;           /* ahora fondo blanco */
-  color: #f70f0f;                /* texto rojo */
-  border-color: #ffffff;
   transform: scale(1.05);
 }
 /* RESPONSIVE - ELIMINADO EL MEDIA QUERY ANTERIOR YA QUE AHORA EL CONTENEDOR PADRE SE ENCARGA */
