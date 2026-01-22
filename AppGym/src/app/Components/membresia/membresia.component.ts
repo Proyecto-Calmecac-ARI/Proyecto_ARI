@@ -176,7 +176,7 @@ export class MembresiaComponent {
     this.mensajeAlerta = mensaje;
     this.mostrarAlerta = true;
   }
-
+    // Para Las Alertas //
   cerrarAlerta() {
   this.mostrarAlerta = false;
   this.mensajeAlerta = '';
@@ -189,7 +189,7 @@ export class MembresiaComponent {
       // Activar plan
       usuarioActual.planActivo = true;
 
-      // 🔥 GUARDAR TAMBIÉN EN EL ARREGLO GLOBAL
+      // GUARDAR TAMBIÉN EN EL ARREGLO GLOBAL
       const usuarios = this.userService.obtenerUsuarios();
       const index = usuarios.findIndex(u => u.correo === usuarioActual.correo);
 
