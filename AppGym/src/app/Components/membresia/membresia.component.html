@@ -75,7 +75,7 @@
               <h3>¿Dónde encontrar el CVV?</h3>
               <img src="/assets/images/membresia/cvv-ejemplo.png" alt="Ejemplo CVV">
               <p>El CVV es el número de 3 dígitos que está en la parte de atrás de tu tarjeta.</p>
-              <button (click)="mostrarAyudaCvv = false">Entendido</button>
+              <button class="close-btn" (click)="mostrarAyudaCvv = false">✕</button>
             </div>
           </div>
         </div>
@@ -85,6 +85,14 @@
           <button class="btn-pagar" [ngStyle]="{ 'font-family': getFont(CustomFonts.IMPACT) }"
             (click)="pay()">Pagar</button>
         </div>
+      </div>
+    </div>
+    <!-- ALERTA PERSONALIZADA -->
+    <div class="alert-backdrop" *ngIf="mostrarAlerta">
+      <div class="alert-box">
+        <button class="close-btn" (click)="cerrarAlerta()">✕</button>
+        <p>{{ mensajeAlerta }}</p>
+        <button class="ok-btn" (click)="cerrarAlerta()">Aceptar</button>
       </div>
     </div>
   </div>

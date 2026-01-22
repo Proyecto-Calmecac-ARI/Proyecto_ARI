@@ -16,6 +16,10 @@ import { Location } from '@angular/common';
   styleUrls: ['./membresia.component.scss']
 })
 export class MembresiaComponent {
+  // Control de alerta personalizada
+  mostrarAlerta: boolean = false;
+  mensajeAlerta: string = '';
+  activarPlanPendiente: boolean = false;
   // Enumeración y función para manejo de tipografías personalizadas //
   CustomFonts = CustomFonts;
   getFont = getFont;
@@ -168,6 +172,33 @@ export class MembresiaComponent {
     // Navega al login
     this.router.navigate(['/login']);
   }
+  mostrarMensaje(mensaje: string) {
+    this.mensajeAlerta = mensaje;
+    this.mostrarAlerta = true;
+  }
+
+  cerrarAlerta() {
+  this.mostrarAlerta = false;
+  this.mensajeAlerta = '';
+
+  if (this.activarPlanPendiente) {
+    this.activarPlanPendiente = false;
+
+    const usuarioActual = this.userService.usuarioActual;
+    if (usuarioActual) {
+      // Activar plan
+      usuarioActual.planActivo = true;
+
+      // 🔥 GUARDAR TAMBIÉN EN EL ARREGLO GLOBAL
+      const usuarios = this.userService.obtenerUsuarios();
+      const index = usuarios.findIndex(u => u.correo === usuarioActual.correo);
+
+      if (index !== -1) {
+        usuarios[index] = { ...usuarioActual };
+      }
+    }
+  }
+}
   // Procesa el pago de la membresía //
   // Valida los datos ingresados y actualiza la información //
   // del usuario actual y del arreglo global de usuarios //
@@ -175,28 +206,28 @@ export class MembresiaComponent {
     const { name, cardNumber, expiration, cvv } = this.formData;
     // Validación de campos obligatorios //
     if (!name || !cardNumber || !expiration || !cvv) {
-      alert('Todos los campos son obligatorios');
+      this.mostrarMensaje('Todos los campos son obligatorios');
       return;
     }
     // Validación de formatos de los datos ingresados //
     if (!this.isNameValid(name)) {
-      alert('El nombre solo debe contener letras');
+      this.mostrarMensaje('El nombre solo debe contener letras');
       return;
     }
     if (!this.isCardNumberValid(cardNumber)) {
-      alert('El número de tarjeta debe tener 16 dígitos');
+      this.mostrarMensaje('El número de tarjeta debe tener 16 dígitos');
       return;
     }
     if (!this.isExpirationValid(expiration)) {
-      alert('La fecha debe tener formato MM/YY');
+      this.mostrarMensaje('La fecha debe tener formato MM/YY');
       return;
     }
     if (!this.isExpirationNotExpired(expiration)) {
-      alert('La tarjeta está vencida');
+      this.mostrarMensaje('La tarjeta está vencida');
       return;
     }
     if (!this.isCvvValid(cvv)) {
-      alert('El CVV debe tener 3 dígitos');
+      this.mostrarMensaje('El CVV debe tener 3 dígitos');
       return;
     }
     // Obtención del usuario actualmente logueado //
@@ -213,7 +244,7 @@ export class MembresiaComponent {
       cvv
     } as MetodoPagoInterface;
     // Activa el plan del usuario y registra fechas de compra y expiración //
-    usuarioActual.planActivo = true;
+    //usuarioActual.planActivo = true;//
     usuarioActual.fechaCompraPlan = new Date();
     usuarioActual.fechaExpiracionPlan = new Date(
       new Date().setFullYear(new Date().getFullYear() + 1)
@@ -234,7 +265,8 @@ export class MembresiaComponent {
     if (index !== -1) {
       usuarios[index] = { ...usuarioActual };
     }
-    alert(`Pago de tu ${planSeleccionado.name} realizado correctamente`);
+    // Mostrar alerta y esperar confirmación del usuario
+    this.activarPlanPendiente = true;
+    this.mostrarMensaje(`Pago de tu ${planSeleccionado.name} realizado correctamente`);
   }
-
 }
