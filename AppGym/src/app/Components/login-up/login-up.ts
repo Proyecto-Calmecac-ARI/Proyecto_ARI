@@ -17,29 +17,31 @@ export class LoginUp {
   getFont = getFont;
   correo: string = '';
   contrasena: string = '';
-  constructor(private userService: UserService, private router: Router) {}
+  mostrarAlerta = false;
+  mensajeAlerta = '';
+  constructor(private userService: UserService, private router: Router) { }
   login() {
     // Validación campos vacíos
     if (!this.correo || !this.contrasena) {
-      alert('Debes llenar todos los campos');
+      this.mostrarMensaje('Debes llenar todos los campos');
       return;
     }
     // Correo inválido
     if (!this.isValidCorreo(this.correo)) {
-      alert('Ingresa un correo electrónico válido');
+      this.mostrarMensaje('Ingresa un correo electrónico válido');
       return;
     }
     const usuario = this.userService.buscarUsuario(this.correo, this.contrasena);
     //  Usuario no existe
     if (!usuario) {
-      alert('contraseña invalida, intenta de nuevo');
+      this.mostrarMensaje('contraseña invalida')
       return;
     }
     // Validar vencimiento del plan
     if (usuario.planActivo && usuario.fechaExpiracionPlan) {
       const today = new Date();
       if (today > usuario.fechaExpiracionPlan) {
-        alert(
+        this.mostrarMensaje(
           'Error, detectamos que no has renovado tu membresía, por favor renuévala y vuelve a entrar.'
         );
         return;
@@ -53,19 +55,19 @@ export class LoginUp {
   register() {
     // Campos vacíos
     if (!this.correo || !this.contrasena) {
-      alert('Debes llenar todos los campos');
+      this.mostrarMensaje('Debes llenar todos los campos');
       return;
     }
     // Correo inválido
     if (!this.isValidCorreo(this.correo)) {
-      alert('Ingresa un correo electrónico válido');
+      this.mostrarMensaje('Ingresa un correo electrónico válido');
       return;
     }
     // Buscar usuario existente
     const usuario = this.userService.buscarUsuario(this.correo, this.contrasena);
     //  Si ya existe
     if (usuario) {
-      alert('El usuario existe, debes iniciar sesión');
+      this.mostrarMensaje('El usuario existe, debes iniciar sesión');
       return;
     }
     // Crear nuevo usuario (registro inicial)
@@ -106,5 +108,13 @@ export class LoginUp {
   isValidCorreo(correo: string): boolean {
     const correoRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return correoRegex.test(correo);
+  }
+  mostrarMensaje(mensaje: string) {
+    this.mensajeAlerta = mensaje;
+    this.mostrarAlerta = true;
+  }
+  cerrarAlerta() {
+    this.mostrarAlerta = false;
+    this.mensajeAlerta = '';
   }
 }
