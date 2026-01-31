@@ -1,7 +1,9 @@
-import { Component, Output, EventEmitter } from '@angular/core'; //Agregado Output y EventEmitter
+import { Component, Output, EventEmitter, Input, OnChanges, SimpleChanges } from
+'@angular/core';
 import { CommonModule } from '@angular/common';
 import { CustomFonts } from '../../enums/fonts.enum';
 import { getFont } from '../../utils/font.util';
+import { RutinaInterface } from '../../../interfaces/RutinaInterface';
 
 @Component({
   selector: 'app-lista-video',
@@ -10,35 +12,43 @@ import { getFont } from '../../utils/font.util';
   templateUrl: './lista-video.html',
   styleUrls: ['./lista-video.scss'],
 })
-export class ListaVideoComponent {
+export class ListaVideoComponent implements OnChanges {
+
   // Evento para cerrar el menú desde este componente
   @Output() closeMenu = new EventEmitter<void>();
 
-  CustomFonts = CustomFonts
-  getFont = getFont
-  videos = [
-    { id: 1, title: 'Video 1 - Quema grasa', active: true },
-    { id: 2, title: 'Video 2 - Quema grasa', active: false },
-    { id: 3, title: 'Video 3 - Quema grasa', active: false },
-    { id: 4, title: 'Video 4 - Quema grasa', active: false },
-    { id: 5, title: 'Video 5 - Quema grasa', active: false },
-    { id: 6, title: 'Video 6 - Quema grasa', active: false },
-    { id: 7, title: 'Video 7 - Quema grasa', active: false },
-    { id: 8, title: 'Video 8 - Quema grasa', active: false },
-    { id: 9, title: 'Video 9 - Quema grasa', active: false }
-  ];
-  
+  CustomFonts = CustomFonts;
+  getFont = getFont;
+
+  // obtenemos el tipo desde RutinaInterface
+  @Input() videos: RutinaInterface['listaVideos'] = [];
+  @Input() videoActivo = 0;
+
+  @Output() seleccionarVideo = new EventEmitter<number>();
+
+  ngOnChanges(changes: SimpleChanges): void {
+
+    if (changes['videos']) {
+      console.log(
+        ' videos recibidos en ListaVideoComponent:',
+        this.videos
+      );
+    }
+
+  }
+
+  seleccionar(index: number): void {
+
+    this.seleccionarVideo.emit(index);
+    this.cerrarMenu();
+
+  }
+
   // Método para cerrar el menú
   cerrarMenu(): void {
+
     this.closeMenu.emit();
+
   }
-  
-  // Ahora también cierra el menú al seleccionar un video
-  seleccionarVideo(id: number): void {
-    this.videos.forEach(video => {
-      video.active = video.id === id;
-    });
-    console.log('Video seleccionado:', id);
-    this.cerrarMenu(); // Cierra el menú al seleccionar un video
-  }
+
 }
