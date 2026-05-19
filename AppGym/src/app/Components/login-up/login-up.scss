@@ -312,3 +312,43 @@ $color-green: #12E800;
     font-size: 0.95rem;
   }
 }
+
+.daltonic-toggle {
+
+  position: absolute;
+
+  top: 20px;
+
+  right: 20px;
+
+  z-index: 10;
+
+  border: none;
+
+  background:
+    rgba(255,255,255,0.15);
+
+  backdrop-filter: blur(10px);
+
+  color: white;
+
+  padding: 12px 18px;
+
+  border-radius: 30px;
+
+  cursor: pointer;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  transition: 0.3s;
+
+  &:hover {
+
+    transform: scale(1.05);
+
+    background:
+      rgba(255,255,255,0.25);
+  }
+} 

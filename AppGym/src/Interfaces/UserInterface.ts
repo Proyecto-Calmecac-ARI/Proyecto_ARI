@@ -34,4 +34,5 @@ export interface UserInterface {
   // Fechas de plan
   fechaCompraPlan?: Date;
   fechaExpiracionPlan?: Date;
+  telefono?: string;
 }

@@ -1,0 +1,508 @@
+<!-- dashboard-admin.html -->
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-circle">
+                G
+            </div>
+
+            <div>
+
+                <h2>
+                    FitManager
+                </h2>
+
+                <span>
+                    Admin Panel
+                </span>
+
+            </div>
+
+        </div>
+
+        <nav>
+
+            <ul>
+
+                <li
+                    [class.active]="vistaActual === 'dashboard'"
+                    (click)="cambiarVista('dashboard')">
+
+                    📊 Dashboard
+
+                </li>
+
+                <li
+                    [class.active]="vistaActual === 'usuarios'"
+                    (click)="cambiarVista('usuarios')">
+
+                    👥 Usuarios
+
+                </li>
+
+                <li
+                    [class.active]="vistaActual === 'rutinas'"
+                    (click)="cambiarVista('rutinas')">
+
+                    🏋️ Rutinas
+
+                </li>
+
+                <li
+                    [class.active]="vistaActual === 'evolucion'"
+                    (click)="cambiarVista('evolucion')">
+
+                    📈 Evolución
+
+                </li>
+
+                <li
+                    [class.active]="vistaActual === 'rankings'"
+                    (click)="cambiarVista('rankings')">
+
+                    🏆 Rankings
+
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </aside>
+
+    <!-- MAIN -->
+
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+
+        <div class="topbar">
+
+            <div>
+
+                <h1>
+                    Dashboard Fitness
+                </h1>
+
+                <p>
+                    Bienvenido al panel administrativo
+                </p>
+
+            </div>
+
+            <div class="admin-profile">
+
+                <img
+                    src="https://i.pravatar.cc/100"
+                    alt="admin">
+
+                <div>
+
+                    <h3>
+                        Administrador
+                    </h3>
+
+                    <span>
+                        Online
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- DASHBOARD -->
+
+        <div *ngIf="vistaActual === 'dashboard'">
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <div>
+
+                        <span>
+                            Usuarios
+                        </span>
+
+                        <h2>
+                            {{ totalUsuarios }}
+                        </h2>
+
+                    </div>
+
+                    <div class="icon orange">
+                        👥
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <div>
+
+                        <span>
+                            Activos
+                        </span>
+
+                        <h2>
+                            {{ usuariosActivos }}
+                        </h2>
+
+                    </div>
+
+                    <div class="icon green">
+                        ✅
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <div>
+
+                        <span>
+                            Inactivos
+                        </span>
+
+                        <h2>
+                            {{ usuariosInactivos }}
+                        </h2>
+
+                    </div>
+
+                    <div class="icon red">
+                        ❌
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <div>
+
+                        <span>
+                            Calorías
+                        </span>
+
+                        <h2>
+                            {{ totalCalorias }}
+                        </h2>
+
+                    </div>
+
+                    <div class="icon fire">
+                        🔥
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- EVOLUCIÓN -->
+
+            <div class="section-title">
+
+                Evolución Diaria
+
+            </div>
+
+            <div class="evolution-grid">
+
+                <div
+                    class="evolution-card"
+                    *ngFor="let item of evolucionDiaria">
+
+                    <h3>
+                        {{ item.fecha }}
+                    </h3>
+
+                    <p>
+                        🔥 {{ item.calorias }} kcal
+                    </p>
+
+                    <p>
+                        🏋️ {{ item.rutinas }} rutinas
+                    </p>
+
+                    <p>
+                        ⚖️ {{ item.peso }} kg
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- USUARIOS -->
+
+        <div *ngIf="vistaActual === 'usuarios'">
+
+            <div class="section-title">
+
+                Gestión de Usuarios
+
+            </div>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Usuario
+                            </th>
+
+                            <th>
+                                Correo
+                            </th>
+
+                            <th>
+                                Objetivo
+                            </th>
+
+                            <th>
+                                Trofeos
+                            </th>
+
+                            <th>
+                                Calorías
+                            </th>
+
+                            <th>
+                                Estado
+                            </th>
+
+                            <th>
+                                Acción
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr
+                            *ngFor="let usuario of usuarios">
+
+                            <td>
+                                {{ usuario.nombreUsuario }}
+                            </td>
+
+                            <td>
+                                {{ usuario.correo }}
+                            </td>
+
+                            <td>
+                                {{ usuario.objetivo }}
+                            </td>
+
+                            <td>
+                                {{ usuario.trofeos }}
+                            </td>
+
+                            <td>
+                                {{ usuario.caloriasQuemadas }}
+                            </td>
+
+                            <td>
+
+                                <span
+                                    class="status"
+                                    [class.active-status]="usuario.planActivo"
+                                    [class.inactive-status]="!usuario.planActivo">
+
+                                    {{
+                                        usuario.planActivo
+                                        ? 'Activo'
+                                        : 'Inactivo'
+                                    }}
+
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <button
+                                    (click)="enviarWhatsApp(usuario)">
+
+                                    WhatsApp
+
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        <!-- RUTINAS -->
+
+        <div *ngIf="vistaActual === 'rutinas'">
+
+            <div class="section-title">
+
+                Rutinas del Gimnasio
+
+            </div>
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <div>
+
+                        <span>
+                            Pecho
+                        </span>
+
+                        <h2>
+                            12
+                        </h2>
+
+                    </div>
+
+                    <div class="icon orange">
+                        🏋️
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <div>
+
+                        <span>
+                            Pierna
+                        </span>
+
+                        <h2>
+                            8
+                        </h2>
+
+                    </div>
+
+                    <div class="icon green">
+                        🦵
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <div>
+
+                        <span>
+                            Cardio
+                        </span>
+
+                        <h2>
+                            15
+                        </h2>
+
+                    </div>
+
+                    <div class="icon fire">
+                        🔥
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- EVOLUCION -->
+
+        <div *ngIf="vistaActual === 'evolucion'">
+
+            <div class="section-title">
+
+                Evolución Semanal
+
+            </div>
+
+            <div class="evolution-grid">
+
+                <div
+                    class="evolution-card"
+                    *ngFor="let item of evolucionDiaria">
+
+                    <h3>
+                        {{ item.fecha }}
+                    </h3>
+
+                    <p>
+                        🔥 {{ item.calorias }} kcal
+                    </p>
+
+                    <p>
+                        🏋️ {{ item.rutinas }} rutinas
+                    </p>
+
+                    <p>
+                        ⚖️ {{ item.peso }} kg
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- RANKINGS -->
+
+        <div *ngIf="vistaActual === 'rankings'">
+
+            <div class="section-title">
+
+                Top Usuarios
+
+            </div>
+
+            <div class="cards">
+
+                <div
+                    class="card"
+                    *ngFor="let usuario of usuarios">
+
+                    <div>
+
+                        <span>
+                            {{ usuario.nombreUsuario }}
+                        </span>
+
+                        <h2>
+                            🏆 {{ usuario.trofeos }}
+                        </h2>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>

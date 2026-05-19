@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../../Services/UserService';
 import { UserInterface } from '../../../interfaces/UserInterface';
+import { ThemeService } from '../../Services/theme';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-login-up',
   imports: [CommonModule, FormsModule],
@@ -19,7 +21,12 @@ export class LoginUp {
   contrasena: string = '';
   mostrarAlerta = false;
   mensajeAlerta = '';
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(
+    private userService: UserService,
+    private router: Router,
+     private themeService: ThemeService,
+     private http: HttpClient
+  ) {}
   login() {
     // Validación campos vacíos
     if (!this.correo || !this.contrasena) {
@@ -34,7 +41,7 @@ export class LoginUp {
     const usuario = this.userService.buscarUsuario(this.correo, this.contrasena);
     //  Usuario no existe
     if (!usuario) {
-      this.mostrarMensaje('contraseña invalida')
+      this.mostrarMensaje('contraseña invalida');
       return;
     }
     // Validar vencimiento del plan
@@ -42,13 +49,15 @@ export class LoginUp {
       const today = new Date();
       if (today > usuario.fechaExpiracionPlan) {
         this.mostrarMensaje(
-          'Error, detectamos que no has renovado tu membresía, por favor renuévala y vuelve a entrar.'
+          'Error, detectamos que no has renovado tu membresía, por favor renuévala y vuelve a entrar.',
         );
         return;
       }
     }
     // Guardar usuario global
     this.userService.guardarUsuarioActual(usuario);
+    // Enviar WhatsApp
+    this.enviarCorreoAutomatico(usuario);
     // Redirecciones
     this.router.navigate(['/dashboard']);
   }
@@ -101,6 +110,19 @@ export class LoginUp {
     // Ir al formulario para completar perfil
     this.router.navigate(['/formulario']);
   }
+  enviarCorreoAutomatico(usuario: any) {
+  this.http.post(
+    'http://localhost:3000/enviar-correo',
+    { usuario, tipo: 'recordatorio' }
+  ).subscribe({
+    next: (resp) => {
+      console.log('Correo enviado');
+    },
+    error: (err) => {
+      console.log(err);
+    }
+  });
+}
   scrollAPlanes() {
     const element = document.getElementById('planes');
     element?.scrollIntoView({ behavior: 'smooth' });
@@ -116,5 +138,8 @@ export class LoginUp {
   cerrarAlerta() {
     this.mostrarAlerta = false;
     this.mensajeAlerta = '';
+  }
+  activarModoDaltonico(): void {
+    this.themeService.toggleDaltonicMode();
   }
 }

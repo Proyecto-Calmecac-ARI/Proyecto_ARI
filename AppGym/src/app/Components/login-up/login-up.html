@@ -1,29 +1,71 @@
 <div class="login-wrapper">
+  <!-- BOTON DALTONICO -->
+  <button
+    class="daltonic-toggle" (click)="activarModoDaltonico()">Modo Daltonico</button>
   <div class="overlay"></div>
   <div class="content">
-    <img src="/assets/images/login/Fit manager.png" class="title-image" />
+    <img
+      src="/assets/images/login/Fit manager.png"
+      class="title-image" />
     <div class="form-box">
-      <input type="email" [(ngModel)]="correo" placeholder="Ingresa tu correo"
+      <input
+        type="email"
+        [(ngModel)]="correo"
+        placeholder="Ingresa tu correo"
         [ngStyle]="{ 'font-family': getFont(customFonts.K2D_REGULAR)}" />
-      <input type="password" [(ngModel)]="contrasena" placeholder="Ingresa tu contraseña"
+      <input
+        type="password"
+        [(ngModel)]="contrasena"
+        placeholder="Ingresa tu contraseña"
         [ngStyle]="{ 'font-family': getFont(customFonts.K2D_REGULAR)}" />
-      <span class="forgot" [ngStyle]="{ 'font-family': getFont(customFonts.K2D_REGULAR)}">Olvide mi contraseña</span>
-      <button class="btn login" [ngStyle]="{ 'font-family': getFont(customFonts.IMPACT)}" (click)="login()">Iniciar
-        sesión</button>
-      <button class="btn register" [ngStyle]="{ 'font-family': getFont(customFonts.IMPACT)}"
-        (click)="register()">Registrarme</button>
+      <span
+        class="forgot"
+        [ngStyle]="{ 'font-family': getFont(customFonts.K2D_REGULAR)}">
+        Olvide mi contraseña
+      </span>
+      <button
+        class="btn login"
+        [ngStyle]="{ 'font-family': getFont(customFonts.IMPACT)}"
+        (click)="login()">
+        Iniciar sesión
+      </button>
+      <button
+        class="btn register"
+        [ngStyle]="{ 'font-family': getFont(customFonts.IMPACT)}"
+        (click)="register()">
+        Registrarme
+      </button>
     </div>
   </div>
-  <div class="footer" (click)="scrollAPlanes()">
-    <p [ngStyle]="{ 'font-family': getFont(customFonts.K2D_REGULAR)}">Conoce nuestros planes</p>
-    <span class="arrow">▼</span>
+  <div
+    class="footer"
+    (click)="scrollAPlanes()">
+    <p
+      [ngStyle]="{ 'font-family': getFont(customFonts.K2D_REGULAR)}">
+      Conoce nuestros planes
+    </p>
+    <span class="arrow">
+      ▼
+    </span>
   </div>
 </div>
 <!-- ALERTA PERSONALIZADA -->
-<div class="alert-backdrop" *ngIf="mostrarAlerta">
+<div
+  class="alert-backdrop"
+  *ngIf="mostrarAlerta">
   <div class="alert-box">
-    <button class="close-btn" (click)="cerrarAlerta()">✕</button>
-    <p>{{ mensajeAlerta }}</p>
-    <button class="ok-btn" (click)="cerrarAlerta()">Aceptar</button>
+    <button
+      class="close-btn"
+      (click)="cerrarAlerta()">
+      ✕
+    </button>
+    <p>
+      {{ mensajeAlerta }}
+    </p>
+    <button
+      class="ok-btn"
+      (click)="cerrarAlerta()">
+      Aceptar
+    </button>
   </div>
 </div>
