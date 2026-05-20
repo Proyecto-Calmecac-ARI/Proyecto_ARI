@@ -231,3 +231,117 @@
     transform: translateX(0);
   }
 }
+/* ===================================== */
+/* MODO DALTÓNICO */
+/* ===================================== */
+
+.registro-container.daltonic-mode {
+  background: #0B1E33 !important;
+  color: #FFFFFF !important;
+}
+
+/* TÍTULO */
+.registro-container.daltonic-mode .titulo {
+  color: #FFD60A !important;
+
+  text-shadow:
+    0px 0px 6px rgba(255, 214, 10, 0.35),
+    2px 2px 0px #00142A,
+    -2px -2px 0px #00142A;
+}
+
+/* LABELS */
+.registro-container.daltonic-mode .campo label {
+  color: #FFFFFF !important;
+}
+
+/* INPUTS Y SELECTS */
+.registro-container.daltonic-mode .campo input,
+.registro-container.daltonic-mode .campo select {
+  background: #102944 !important;
+
+  color: #FFD60A !important;
+
+  border:
+    2px solid #FFD60A !important;
+
+  box-shadow:
+    0 0 10px rgba(255, 214, 10, 0.12);
+}
+
+/* PLACEHOLDERS */
+.registro-container.daltonic-mode
+.campo
+input::placeholder {
+  color: rgba(255, 214, 10, 0.75) !important;
+}
+
+/* TEXTO CUANDO ESCRIBE */
+.registro-container.daltonic-mode
+.campo
+input:not(:placeholder-shown) {
+  color: #FFFFFF !important;
+}
+
+/* OPTIONS */
+.registro-container.daltonic-mode
+.campo
+select
+option {
+  background: #102944;
+  color: #FFD60A;
+}
+
+/* FLECHA SELECT */
+.registro-container.daltonic-mode .campo select {
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23FFD60A' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+}
+
+/* BOTÓN REGISTRO */
+.registro-container.daltonic-mode .btn-registro {
+  background:
+    linear-gradient(
+      135deg,
+      #005FCC,
+      #003E8A
+    ) !important;
+
+  color: #FFFFFF !important;
+
+  border:
+    2px solid #FFD60A !important;
+
+  box-shadow:
+    0 8px 20px rgba(0, 95, 204, 0.4);
+}
+
+/* HOVER BOTÓN */
+.registro-container.daltonic-mode
+.btn-registro:hover {
+  background:
+    linear-gradient(
+      135deg,
+      #0A74FF,
+      #0052B8
+    ) !important;
+
+  transform: scale(1.08);
+
+  box-shadow:
+    0 0 24px rgba(255, 214, 10, 0.35);
+}
+
+/* CAMPOS ERROR */
+.registro-container.daltonic-mode
+.campo-error
+input,
+
+.registro-container.daltonic-mode
+.campo-error
+select {
+  border:
+    2px solid #FFD60A !important;
+
+  box-shadow:
+    0 0 14px rgba(255, 214, 10, 0.45) !important;
+}

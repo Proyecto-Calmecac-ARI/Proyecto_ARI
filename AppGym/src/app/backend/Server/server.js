@@ -106,7 +106,6 @@ app.post('/enviar-correo', async (req, res) => {
                     ">
                       <tr>
                         <td style="padding:35px;">
-
                           <h3 style="
                             color:#FF0000;
                             margin-top:0;
@@ -115,38 +114,31 @@ app.post('/enviar-correo', async (req, res) => {
                           ">
                             ⚡ Información del usuario
                           </h3>
-
                           <p style="color:#FFFFFF;">
                             <strong>👤 Nombre:</strong>
                             ${usuario.nombreUsuario}
                             ${usuario.apellidosUsuario}
-                          </p>
-
+                          </p
                           <p style="color:#FFFFFF;">
                             <strong>📧 Correo:</strong>
                             ${usuario.correo}
                           </p>
-
                           <p style="color:#FFFFFF;">
                             <strong>🎯 Objetivo:</strong>
                             ${usuario.objetivo}
                           </p>
-
                           <p style="color:#FFFFFF;">
                             <strong>🏋️ Rutina:</strong>
                             ${usuario.rutinaActiva?.nombreLista || 'Sin rutina'}
                           </p>
-
                           <p style="color:#FFFFFF;">
                             <strong>🔥 Calorías:</strong>
                             ${usuario.caloriasQuemadas}
                           </p>
-
                           <p style="color:#FFFFFF;">
                             <strong>🏆 Trofeos:</strong>
                             ${usuario.trofeos}
                           </p>
-
                           <p style="color:#FFFFFF;">
                             <strong>💎 Plan:</strong>
                             ${usuario.planAsociado?.nombrePlan}
@@ -156,27 +148,21 @@ app.post('/enviar-correo', async (req, res) => {
                             <strong>📅 Fecha:</strong>
                             ${fechaActual}
                           </p>
-
                           <p style="color:#FFFFFF;">
                             <strong>⏰ Hora:</strong>
                             ${hora}
                           </p>
-
                         </td>
                       </tr>
-
                     </table>
-
                     <table width="100%" cellpadding="0" cellspacing="0" style="
                       margin-top:35px;
                       background:#220000;
                       border-left:6px solid #FF0000;
                       border-radius:20px;
                     ">
-
                       <tr>
                         <td style="padding:30px;">
-
                           <h2 style="
                             color:#FFFFFF;
                             margin:0;
@@ -184,17 +170,13 @@ app.post('/enviar-correo', async (req, res) => {
                           ">
                             ${mensajeRandom}
                           </h2>
-
                         </td>
                       </tr>
-
                     </table>
-
                     <div style="
                       text-align:center;
                       margin-top:45px;
                     ">
-
                       <a href="#"
                         style="
                           background:#FF0000;
@@ -208,19 +190,15 @@ app.post('/enviar-correo', async (req, res) => {
                         ">
                         🔥 CONTINUAR ENTRENANDO
                       </a>
-
                     </div>
-
                   </td>
                 </tr>
-
                 <tr>
                   <td style="
                     background:#050505;
                     text-align:center;
                     padding:35px;
                   ">
-
                     <p style="
                       color:#777777;
                       margin:0;
@@ -228,45 +206,34 @@ app.post('/enviar-correo', async (req, res) => {
                     ">
                       FIT MANAGER © 2025
                     </p>
-
                   </td>
                 </tr>
-
               </table>
-
             </td>
           </tr>
         </table>
-
       </div>
-
       `;
     }
      // RECORDATORIO
     if (tipo === 'recordatorio') {
-
       asunto = '🔥 Hoy toca entrenar | FIT MANAGER';
-
       contenidoHTML = `
-      
       <div style="
         margin:0;
         padding:50px 0;
         background:#000000;
         font-family:Arial,sans-serif;
       ">
-
         <table width="100%" cellpadding="0" cellspacing="0">
           <tr>
             <td align="center">
-
               <table width="680" cellpadding="0" cellspacing="0" style="
                 background:#111111;
                 border-radius:28px;
                 overflow:hidden;
                 border:1px solid #FF0000;
               ">
-
                 <!-- HEADER -->
                 <tr>
                   <td style="
@@ -275,7 +242,6 @@ app.post('/enviar-correo', async (req, res) => {
                     text-align:center;
                     border-bottom:4px solid #FF0000;
                   ">
-
                     <h1 style="
                       color:#FFFFFF !important;
                       margin:0;
@@ -285,7 +251,6 @@ app.post('/enviar-correo', async (req, res) => {
                     ">
                       FIT MANAGER
                     </h1>
-
                     <p style="
                       color:#FF0000;
                       margin-top:18px;
@@ -294,14 +259,11 @@ app.post('/enviar-correo', async (req, res) => {
                     ">
                       RECORDATORIO DE ENTRENAMIENTO
                     </p>
-
                   </td>
                 </tr>
-
                 <!-- BODY -->
                 <tr>
                   <td style="padding:45px;">
-
                     <h2 style="
                       color:#FFFFFF;
                       margin-top:0;
@@ -309,7 +271,6 @@ app.post('/enviar-correo', async (req, res) => {
                     ">
                       Hola ${usuario.nombreUsuario || 'Usuario'} 💪
                     </h2>
-
                     <p style="
                       color:#cfcfcf;
                       font-size:17px;
@@ -318,7 +279,6 @@ app.post('/enviar-correo', async (req, res) => {
                       Tu rutina te está esperando.
                       Recuerda que cada entrenamiento te acerca más a tus objetivos.
                     </p>
-
                     <!-- STATS -->
                     <table width="100%" cellpadding="0" cellspacing="0" style="
                       margin-top:35px;
@@ -326,10 +286,8 @@ app.post('/enviar-correo', async (req, res) => {
                       border-radius:20px;
                       border:1px solid #2a2a2a;
                     ">
-
                       <tr>
                         <td style="padding:35px;">
-
                           <h3 style="
                             color:#FF0000;
                             margin-top:0;
@@ -338,47 +296,37 @@ app.post('/enviar-correo', async (req, res) => {
                           ">
                             🔥 Tu progreso actual
                           </h3>
-
                           <p style="color:#FFFFFF;">
                             <strong>🎯 Objetivo:</strong>
                             ${usuario.objetivo}
                           </p>
-
                           <p style="color:#FFFFFF;">
                             <strong>🏋️ Rutina:</strong>
                             ${usuario.rutinaActiva?.nombreLista || 'Sin rutina'}
                           </p>
-
                           <p style="color:#FFFFFF;">
                             <strong>🔥 Calorías quemadas:</strong>
                             ${usuario.caloriasQuemadas}
                           </p>
-
                           <p style="color:#FFFFFF;">
                             <strong>🏆 Trofeos:</strong>
                             ${usuario.trofeos}
                           </p>
-
                           <p style="color:#FFFFFF;">
                             <strong>💎 Plan:</strong>
                             ${usuario.planAsociado?.nombrePlan}
                           </p>
-
                           <p style="color:#FFFFFF;">
                             <strong>📅 Fecha:</strong>
                             ${fechaActual}
                           </p>
-
                           <p style="color:#FFFFFF;">
                             <strong>⏰ Hora:</strong>
                             ${hora}
                           </p>
-
                         </td>
                       </tr>
-
                     </table>
-
                     <!-- MOTIVATION -->
                     <table width="100%" cellpadding="0" cellspacing="0" style="
                       margin-top:35px;
@@ -386,10 +334,8 @@ app.post('/enviar-correo', async (req, res) => {
                       border-left:6px solid #FF0000;
                       border-radius:20px;
                     ">
-
                       <tr>
                         <td style="padding:30px;">
-
                           <h2 style="
                             color:#FFFFFF;
                             margin:0;
@@ -398,18 +344,14 @@ app.post('/enviar-correo', async (req, res) => {
                           ">
                             ${mensajeRandom}
                           </h2>
-
                         </td>
                       </tr>
-
                     </table>
-
                     <!-- BUTTON -->
                     <div style="
                       text-align:center;
                       margin-top:45px;
                     ">
-
                       <a href="#"
                         style="
                           background:#FF0000;
@@ -423,12 +365,9 @@ app.post('/enviar-correo', async (req, res) => {
                         ">
                         🏋️ ENTRENAR AHORA
                       </a>
-
                     </div>
-
                   </td>
                 </tr>
-
                 <!-- FOOTER -->
                 <tr>
                   <td style="
@@ -436,7 +375,6 @@ app.post('/enviar-correo', async (req, res) => {
                     text-align:center;
                     padding:35px;
                   ">
-
                     <p style="
                       color:#777777;
                       margin:0;

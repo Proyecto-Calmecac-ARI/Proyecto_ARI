@@ -2,7 +2,7 @@ import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { AccesibilidadService } from '../../Services/accesibilidad.service';
 import { CustomFonts } from '../../enums/fonts.enum';
 import { getFont } from '../../utils/font.util';
 import { ListaVideoComponent } from '../lista-video/lista-video';
@@ -41,7 +41,8 @@ export class ReproductorVideo implements OnInit {
   constructor(
     private router: Router,
     private location: Location,
-    private userService: UserService
+    private userService: UserService,
+    public accesibilidadService: AccesibilidadService
   ) { }
 
   ngOnInit() {

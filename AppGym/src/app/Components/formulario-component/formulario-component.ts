@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../Services/UserService';
 import { UserInterface } from '../../../interfaces/UserInterface';
+import { AccesibilidadService } from '../../Services/accesibilidad.service';
 
 @Component({
   selector: 'app-formulario-component',
@@ -17,7 +18,8 @@ export class FormularioComponent implements OnInit {
   // Inyección de dependencias
   constructor(
     private userService: UserService, // Servicio de usuario
-    private router: Router             // Router para redirecciones
+    private router: Router,             // Router para redirecciones
+    public accesibilidadService: AccesibilidadService
   ) { }
   // Método que se ejecuta al iniciar el componente
   ngOnInit(): void {

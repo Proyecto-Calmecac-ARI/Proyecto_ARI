@@ -860,3 +860,232 @@ button {
         padding: 8px;
     }
 }
+
+/* =========================================
+   MODO DALTÓNICO
+========================================= */
+
+.layout.daltonic-mode {
+  background:
+    linear-gradient(
+      135deg,
+      #071426,
+      #0B1E33
+    ) !important;
+}
+
+/* SIDEBAR */
+
+.layout.daltonic-mode .sidebar {
+  background:
+    rgba(11, 30, 51, 0.92) !important;
+
+  border-right:
+    1px solid rgba(255, 214, 10, 0.25) !important;
+
+  box-shadow:
+    0 0 20px rgba(255, 214, 10, 0.08);
+}
+
+/* LOGO */
+
+.layout.daltonic-mode .logo h2 {
+  color: #FFFFFF !important;
+}
+
+.layout.daltonic-mode .logo span {
+  color: #FFD60A !important;
+}
+
+.layout.daltonic-mode .logo-circle {
+  background:
+    linear-gradient(
+      135deg,
+      #005FCC,
+      #003E8A
+    ) !important;
+
+  color: #FFD60A !important;
+
+  box-shadow:
+    0 0 20px rgba(255, 214, 10, 0.25);
+}
+
+/* NAV */
+
+.layout.daltonic-mode nav li {
+  color: #D6E4FF !important;
+}
+
+.layout.daltonic-mode nav li:hover {
+  background:
+    rgba(255, 214, 10, 0.08) !important;
+
+  color: #FFD60A !important;
+}
+
+/* ACTIVE */
+
+.layout.daltonic-mode .active {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 95, 204, 0.35),
+      rgba(255, 214, 10, 0.18)
+    ) !important;
+
+  color: #FFFFFF !important;
+
+  box-shadow:
+    0 0 24px rgba(255, 214, 10, 0.18);
+}
+
+/* TOPBAR */
+
+.layout.daltonic-mode .topbar h1 {
+  color: #FFFFFF !important;
+}
+
+.layout.daltonic-mode .topbar p {
+  color: #FFD60A !important;
+}
+
+/* ADMIN PROFILE */
+
+.layout.daltonic-mode .admin-profile {
+  background:
+    rgba(16, 41, 68, 0.92) !important;
+
+  border:
+    1px solid rgba(255, 214, 10, 0.25) !important;
+}
+
+.layout.daltonic-mode .admin-profile h3 {
+  color: #FFFFFF !important;
+}
+
+.layout.daltonic-mode .admin-profile span {
+  color: #FFD60A !important;
+}
+
+.layout.daltonic-mode .admin-profile img {
+  border:
+    2px solid #FFD60A;
+}
+
+/* CARDS */
+
+.layout.daltonic-mode .card,
+.layout.daltonic-mode .evolution-card,
+.layout.daltonic-mode .table-container {
+  background:
+    rgba(16, 41, 68, 0.88) !important;
+
+  border:
+    1px solid rgba(255, 214, 10, 0.18) !important;
+
+  box-shadow:
+    0 8px 24px rgba(0,0,0,0.25);
+}
+
+/* TITLES */
+
+.layout.daltonic-mode .section-title,
+.layout.daltonic-mode .card h2,
+.layout.daltonic-mode .evolution-card h3,
+.layout.daltonic-mode th {
+  color: #FFFFFF !important;
+}
+
+/* TEXT */
+
+.layout.daltonic-mode .card span,
+.layout.daltonic-mode .evolution-card p,
+.layout.daltonic-mode td {
+  color: #D6E4FF !important;
+}
+
+/* ICONS */
+
+.layout.daltonic-mode .orange,
+.layout.daltonic-mode .green,
+.layout.daltonic-mode .red,
+.layout.daltonic-mode .fire {
+  background:
+    rgba(255, 214, 10, 0.12) !important;
+
+  border:
+    1px solid rgba(255, 214, 10, 0.22);
+}
+
+/* TABLE */
+
+.layout.daltonic-mode thead {
+  background:
+    rgba(255, 214, 10, 0.08) !important;
+}
+
+.layout.daltonic-mode tbody tr:hover {
+  background:
+    rgba(255, 214, 10, 0.05) !important;
+}
+
+/* STATUS */
+
+.layout.daltonic-mode .active-status {
+  background:
+    rgba(255, 214, 10, 0.12) !important;
+
+  color: #FFD60A !important;
+}
+
+.layout.daltonic-mode .inactive-status {
+  background:
+    rgba(0, 95, 204, 0.18) !important;
+
+  color: #8EC5FF !important;
+}
+
+/* BUTTONS */
+
+.layout.daltonic-mode button {
+  background:
+    linear-gradient(
+      135deg,
+      #005FCC,
+      #003E8A
+    ) !important;
+
+  color: #FFFFFF !important;
+
+  border:
+    2px solid #FFD60A !important;
+
+  box-shadow:
+    0 6px 18px rgba(0, 95, 204, 0.35);
+}
+
+.layout.daltonic-mode button:hover {
+  background:
+    linear-gradient(
+      135deg,
+      #0A74FF,
+      #0052B8
+    ) !important;
+
+  box-shadow:
+    0 0 22px rgba(255, 214, 10, 0.3);
+}
+
+/* MOBILE SIDEBAR */
+
+@media (max-width: 768px) {
+
+  .layout.daltonic-mode .sidebar {
+    background:
+      rgba(11, 30, 51, 0.97) !important;
+
+    border:
+      1px solid rgba(255, 214, 10, 0.22) !important;
+  }
+}

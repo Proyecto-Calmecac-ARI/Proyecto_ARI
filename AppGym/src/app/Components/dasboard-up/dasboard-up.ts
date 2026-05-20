@@ -6,6 +6,7 @@ import { UserService } from '../../Services/UserService';
 import { UserInterface } from '../../../interfaces/UserInterface';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { AccesibilidadService } from '../../Services/accesibilidad.service';
 @Component({
   selector: 'app-dasboard-up',
   imports: [ CommonModule ],
@@ -24,10 +25,12 @@ export class DasboardUp {
   constructor(
     private userService: UserService,
     private router: Router,
-    private location: Location
+    private location: Location,
+    public accesibilidadService: AccesibilidadService
   ) {}
   logout(): void{
     //Limpia el usuario actual
+    this.userService.cerrarSesion()
     this.userService.usuarioActual = null;
     //Reemplaza la url para que no se pueda volver atras despues de cerrar sesion
     this.location.replaceState('/login');

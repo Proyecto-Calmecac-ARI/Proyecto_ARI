@@ -4,6 +4,7 @@ import { CustomFonts } from '../../enums/fonts.enum';
 import { getFont } from '../../utils/font.util';
 import { RutinaInterface } from '../../../interfaces/RutinaInterface';
 import { Router } from '@angular/router';
+import { AccesibilidadService } from '../../Services/accesibilidad.service';
 
 @Component({
   selector: 'app-dasboard-down',
@@ -175,7 +176,7 @@ export class DasboardDown {
 
   ];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, public accesibilidadService: AccesibilidadService) {}
 
   clicRutine(routine: RutinaInterface) {
 

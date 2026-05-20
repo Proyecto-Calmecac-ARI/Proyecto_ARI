@@ -1,5 +1,5 @@
-<h1 class="titulo" [ngStyle]="{ 'font-family': getFont(customFonts.IMPACT)}" id="planes">Planes</h1>
-<div class="page-wrapper">
+<h1 class="titulo" [ngStyle]="{ 'font-family': getFont(customFonts.IMPACT)}" id="planes" [class.daltonic-mode]="accesibilidadService.modoDaltonicoActivo">Planes</h1>
+<div class="page-wrapper" [class.daltonic-mode]="accesibilidadService.modoDaltonicoActivo">
   <div class="planes-container">
     <!-- PLAN FitStart -->
     <div class="plan-card">

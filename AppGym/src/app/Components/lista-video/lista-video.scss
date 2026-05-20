@@ -103,3 +103,78 @@
   transform: scale(1.05);
 }
 /* RESPONSIVE - ELIMINADO EL MEDIA QUERY ANTERIOR YA QUE AHORA EL CONTENEDOR PADRE SE ENCARGA */
+/* ===================================== */
+/* MODO DALTÓNICO */
+/* ===================================== */
+
+.lista-video.daltonic-mode {
+
+  background: #0B1E33 !important;
+
+  color: #FFFFFF !important;
+
+  .titulo {
+
+    color: #FFD60A !important;
+  }
+
+  .lista li {
+
+    color: #FFFFFF !important;
+  }
+
+  .lista li:hover {
+
+    color: #FFD60A !important;
+
+    transform: scale(1.07);
+
+    font-weight: 600;
+  }
+
+  .lista li.activo {
+
+    color: #FFD60A !important;
+
+    font-weight: 700;
+
+    transform: scale(1.07);
+  }
+
+  .footer {
+
+    border-top:
+      1px solid rgba(255, 214, 10, 0.35) !important;
+  }
+
+  .cerrar {
+
+    background:
+      linear-gradient(
+        135deg,
+        #005FCC,
+        #003E8A
+      ) !important;
+
+    border:
+      2px solid #FFD60A !important;
+
+    color: #FFFFFF !important;
+
+    box-shadow:
+      0 6px 16px rgba(0, 95, 204, 0.45);
+  }
+
+  .cerrar:hover {
+
+    background:
+      linear-gradient(
+        135deg,
+        #0A74FF,
+        #0052B8
+      ) !important;
+
+    transform: scale(1.05);
+  }
+
+}

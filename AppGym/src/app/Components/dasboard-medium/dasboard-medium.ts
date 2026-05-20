@@ -6,6 +6,7 @@ import { getFont } from '../../utils/font.util';
 import { UserService } from '../../Services/UserService';
 import { UserInterface } from '../../../interfaces/UserInterface';
 import { AsistenciasInterface } from '../../../interfaces/AsistenciasInterface';
+import { AccesibilidadService } from '../../Services/accesibilidad.service';
 
 /* MODELO PARA MOSTRAR EL RANKING */
 interface RankingUser {
@@ -57,7 +58,7 @@ export class DasboardMedium implements OnInit {
   monthOptions = this.monthNames;
 
   /* INYECCIÓN DEL USER SERVICE */
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, public accesibilidadService: AccesibilidadService) { }
 
   /* INIT DEL COMPONENTE */
   ngOnInit(): void {

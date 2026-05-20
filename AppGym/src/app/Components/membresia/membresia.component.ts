@@ -7,6 +7,7 @@ import { UserService } from '../../Services/UserService';
 import { MetodoPagoInterface } from '../../../interfaces/MetodoPagoInterface';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { AccesibilidadService } from '../../Services/accesibilidad.service';
 
 @Component({
   selector: 'app-membresia',
@@ -30,7 +31,8 @@ export class MembresiaComponent {
   constructor(
     private userService: UserService,
     private router: Router,
-    private location: Location
+    private location: Location,
+    public accesibilidadService: AccesibilidadService
   ) { }
   // Devuelve siempre el usuario actual desde el servicio //
   get usuarioActual() {
@@ -166,6 +168,7 @@ export class MembresiaComponent {
   }
   logout(): void {
     // Limpia el usuario actual
+    this.userService.cerrarSesion()
     this.userService.usuarioActual = null;
     // Reemplaza la URL para que no se pueda volver atrás
     this.location.replaceState('/login');

@@ -104,3 +104,45 @@
     font-size: 50px;
   }
 }
+
+/* ===================================== */
+/* MODO DALTÓNICO */
+/* ===================================== */
+
+.tarjeta-container.daltonic-mode {
+
+  .tarjeta,
+  .tarjeta-salir {
+
+    background: #11253D !important;
+
+    border: 2px solid #FFD60A !important;
+
+    box-shadow:
+      0 0 14px rgba(255,214,10,0.18);
+
+  }
+
+  .titulos {
+
+    color: #FFFFFF !important;
+
+  }
+
+  .value {
+
+    color: #FFD60A !important;
+
+  }
+
+  .tarjeta:hover,
+  .tarjeta-salir:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow:
+      0 0 18px rgba(255,214,10,0.35);
+
+  }
+
+}

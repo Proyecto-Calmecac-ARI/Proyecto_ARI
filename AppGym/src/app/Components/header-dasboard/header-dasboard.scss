@@ -156,5 +156,28 @@
     font-size: 12px;
     justify-content: center;
   }
-  
+}
+
+/* ===================================== */
+/* MODO DALTÓNICO */
+/* ===================================== */
+
+.header-container.daltonic-mode {
+  background: #0B1E33 !important;
+  border-bottom: 2px solid #FFD60A !important;
+}
+
+.header-container.daltonic-mode .profile-name {
+  color: #FFFFFF !important;
+}
+
+.header-container.daltonic-mode .profile-role {
+  color: #FFD60A !important;
+}
+
+.header-container.daltonic-mode .profile-icon {
+  border: 2px solid #FFD60A !important;
+
+  box-shadow:
+    0 0 12px rgba(255,214,10,0.35) !important;
 }

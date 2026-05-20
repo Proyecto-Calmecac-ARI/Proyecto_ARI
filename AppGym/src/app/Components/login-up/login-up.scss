@@ -352,3 +352,97 @@ $color-green: #12E800;
       rgba(255,255,255,0.25);
   }
 } 
+/* ===================================== */
+/* MODO DALTÓNICO */
+/* ===================================== */
+.daltonic-mode {
+  /* Fondo principal */
+  .login-wrapper {
+    background-image:
+      linear-gradient(
+        rgba(0,0,0,0.75),
+        rgba(0,0,0,0.75)
+      ),
+      url('/assets/images/login/Fondo principal.png');
+  }
+  /* Inputs */
+  .form-box {
+    input {
+      background: #1E3A5F !important;
+      color: #FFD60A !important;
+      border: 2px solid #FFD60A !important;
+      &::placeholder {
+        color:
+          rgba(255,214,10,0.7) !important;
+      }
+    }
+    /* Texto recuperar contraseña */
+    .forgot {
+      color: #FFD60A !important;
+    }
+    /* Botón login */
+    .btn.login {
+      background:
+        linear-gradient(
+          135deg,
+          #005FCC,
+          #003E8A
+        ) !important;
+      color: #FFFFFF !important;
+      box-shadow:
+        0 6px 18px rgba(0,95,204,0.45);
+    }
+    /* Botón registro */
+    .btn.register {
+      border: 2px solid #FFD60A;
+      color: #FFD60A !important;
+      background:
+        rgba(255,255,255,0.05);
+    }
+  }
+  /* Footer */
+  .footer {
+    p,
+    .arrow {
+      color: #FFD60A !important;
+    }
+  }
+  /* Alertas */
+  .alert-box {
+    background:
+      linear-gradient(
+        180deg,
+        #102542 0%,
+        #1B3358 100%
+      );
+    border:
+      2px solid #FFD60A;
+    p {
+      color: #FFFFFF;
+    }
+  }
+  /* Botón alerta */
+  .ok-btn {
+    background:
+      linear-gradient(
+        135deg,
+        #005FCC,
+        #003E8A
+      ) !important;
+    box-shadow:
+      0 6px 14px rgba(0,95,204,0.45);
+    color: #FFFFFF !important;
+  }
+  /* Botón activar modo */
+  .daltonic-toggle {
+    background:
+      rgba(255,214,10,0.18);
+    border:
+      2px solid #FFD60A;
+    color: #FFD60A;
+    &:hover {
+      background:
+        rgba(255,214,10,0.28);
+    }
+  }
+}

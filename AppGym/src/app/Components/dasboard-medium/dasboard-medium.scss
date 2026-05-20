@@ -315,3 +315,127 @@ body {
   font-size: 1.7rem;     
   font-weight: 1000;      
 }
+
+/* ===================================== */
+/* MODO DALTÓNICO */
+/* ===================================== */
+
+.dashboard-container.daltonic-mode {
+
+  /* TARJETAS */
+  .ranking-card,
+  .calendar-card {
+
+    background: #11253D !important;
+
+    border: 2px solid #FFD60A !important;
+
+    box-shadow:
+      0 0 18px rgba(255,214,10,0.15);
+
+  }
+
+  /* TÍTULOS */
+  .title,
+  .calendar-header .month-label,
+  .calendar-card h3,
+  .position {
+
+    color: #FFFFFF !important;
+
+  }
+
+  /* TROFEOS */
+  .trophies {
+
+    color: #FFD60A !important;
+
+  }
+
+  /* AVATARES */
+  .avatar {
+
+    border: 4px solid #FFD60A !important;
+
+    box-shadow:
+      0 0 12px rgba(255,214,10,0.25);
+
+  }
+
+  /* BOTONES DEL CALENDARIO */
+  .nav-btn {
+
+    border: 2px solid #FFD60A !important;
+
+    background: #1B3A57 !important;
+
+    color: #FFFFFF !important;
+
+  }
+
+  .nav-btn:hover {
+
+    background: #244A70 !important;
+
+  }
+
+  /* SELECTORES */
+  .calendar-controls select {
+
+    background: #1B3A57 !important;
+
+    border: 1px solid #FFD60A !important;
+
+    color: #FFFFFF !important;
+
+  }
+
+  /* DÍAS DEL CALENDARIO */
+  .days span {
+
+    color: #FFFFFF;
+
+  }
+
+  /* DÍA CON ASISTENCIA */
+  .days span.attendance {
+
+    background: #FFD60A !important;
+
+    color: #000000 !important;
+
+  }
+
+  /* DÍA ACTUAL */
+  .days span.active:not(.attendance) {
+
+    background: #4CC9F0 !important;
+
+    color: #000000 !important;
+
+  }
+
+  /* DÍA SELECCIONADO */
+  .days span.selected {
+
+    background: #2563EB !important;
+
+    color: #FFFFFF !important;
+
+  }
+
+  /* HOVER */
+  .days span:hover {
+
+    background: rgba(255,214,10,0.15) !important;
+
+  }
+
+  /* SCROLL */
+  .ranking-card::-webkit-scrollbar-thumb {
+
+    background: #FFD60A !important;
+
+  }
+
+}

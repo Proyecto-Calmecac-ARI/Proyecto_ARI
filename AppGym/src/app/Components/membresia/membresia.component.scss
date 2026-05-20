@@ -494,3 +494,221 @@ html,body {
   }
   
 }
+/* ===================================== */
+/* MODO DALTÓNICO */
+/* ===================================== */
+
+.page-background.daltonic-mode {
+
+  background:
+    linear-gradient(
+      to bottom,
+      #071426,
+      #102542
+    ) !important;
+
+  /* ========================= */
+  /* TOPBAR */
+  /* ========================= */
+
+  .topbar {
+
+    border-bottom:
+      1px solid rgba(255,214,10,0.25);
+  }
+
+  .username {
+
+    color: #FFD60A !important;
+  }
+
+  .perfil-ico {
+
+    border:
+      2px solid #FFD60A;
+
+    box-shadow:
+      0 0 12px rgba(255,214,10,0.25);
+  }
+
+  /* ========================= */
+  /* TITULO */
+  /* ========================= */
+
+  .title {
+
+    color: #FFD60A !important;
+  }
+
+  /* ========================= */
+  /* TARJETA SALIR */
+  /* ========================= */
+
+  .tarjeta-salir {
+
+    background: #16355C !important;
+
+    border:
+      2px solid #FFD60A;
+
+    box-shadow:
+      0 4px 10px rgba(0,0,0,0.35);
+  }
+
+  /* ========================= */
+  /* TARJETAS PLANES */
+  /* ========================= */
+
+  .plan-card {
+
+    background: #16355C !important;
+
+    color: #FFFFFF !important;
+
+    border:
+      2px solid rgba(255,214,10,0.25);
+
+    box-shadow:
+      0 8px 20px rgba(0,0,0,0.35);
+  }
+
+  .black {
+
+    color: #FFFFFF !important;
+  }
+
+  .red {
+
+    color: #FFD60A !important;
+  }
+
+  .plan-description {
+
+    color: #E8EEF7 !important;
+  }
+
+  /* ========================= */
+  /* PRECIOS */
+  /* ========================= */
+
+  .price-red {
+
+    color: #FFD60A !important;
+  }
+
+  .price-black {
+
+    color: #FFFFFF !important;
+  }
+
+  /* ========================= */
+  /* INPUTS */
+  /* ========================= */
+
+  input {
+
+    background: #0B1E33 !important;
+
+    border:
+      2px solid #FFD60A !important;
+
+    color: #FFFFFF !important;
+  }
+
+  input::placeholder {
+
+    color:
+      rgba(255,255,255,0.6) !important;
+  }
+
+  label {
+
+    color: #FFFFFF !important;
+  }
+
+  /* ========================= */
+  /* BOTONES */
+  /* ========================= */
+
+  .btn-contratar,
+  .btn-pagar,
+  .btn-cancelar,
+  .btn-help,
+  .ok-btn {
+
+    background:
+      linear-gradient(
+        135deg,
+        #005FCC,
+        #003E8A
+      ) !important;
+
+    color: #FFFFFF !important;
+
+    border:
+      2px solid #FFD60A;
+
+    box-shadow:
+      0 6px 16px rgba(0,95,204,0.35);
+  }
+
+  .btn-contratar:hover,
+  .btn-pagar:hover,
+  .btn-cancelar:hover,
+  .btn-help:hover,
+  .ok-btn:hover {
+
+    background:
+      linear-gradient(
+        135deg,
+        #0A74FF,
+        #0052B8
+      ) !important;
+  }
+
+  /* ========================= */
+  /* MODAL CVV */
+  /* ========================= */
+
+  .cvv-modal {
+
+    background: #16355C !important;
+
+    border:
+      2px solid #FFD60A;
+  }
+
+  .cvv-modal h3,
+  .cvv-modal p {
+
+    color: #FFFFFF !important;
+  }
+
+  /* ========================= */
+  /* ALERTAS */
+  /* ========================= */
+
+  .alert-box {
+
+    background:
+      linear-gradient(
+        180deg,
+        #16355C,
+        #102542
+      ) !important;
+
+    border:
+      2px solid #FFD60A;
+  }
+
+  .alert-box p {
+
+    color: #FFFFFF !important;
+  }
+
+  .close-btn {
+
+    color: #FFFFFF !important;
+  }
+
+}

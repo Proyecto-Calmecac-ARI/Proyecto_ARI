@@ -509,3 +509,89 @@ video {
   50%  { transform: translateY(-6px); }
   100% { transform: translateY(0); }
 }
+
+/* ===================================== */
+/* MODO DALTÓNICO */
+/* ===================================== */
+
+.video-container.daltonic-mode {
+  background: #0B1E33 !important;
+  color: #FFFFFF !important;
+}
+
+/* HEADER */
+.video-container.daltonic-mode .label {
+  color: #FFD60A !important;
+}
+
+.video-container.daltonic-mode .time {
+  color: #FFD60A !important;
+}
+
+/* BOTÓN MENÚ */
+.video-container.daltonic-mode .menu-btn {
+  background: #003E8A !important;
+
+  box-shadow:
+    0 0 14px rgba(255, 214, 10, 0.35);
+}
+
+.video-container.daltonic-mode .menu-btn span {
+  background: #FFD60A !important;
+}
+
+/* VIDEO BOX */
+.video-container.daltonic-mode .video-box {
+  border: 2px solid #FFD60A;
+}
+
+/* BOTÓN PLAY */
+.video-container.daltonic-mode .play-btn {
+  background: #005FCC !important;
+  color: #FFFFFF !important;
+
+  box-shadow:
+    0 0 18px rgba(255, 214, 10, 0.4);
+}
+
+.video-container.daltonic-mode .play-btn:hover {
+  background: #0A74FF !important;
+}
+
+/* INFO VIDEO */
+.video-container.daltonic-mode .info h3 {
+  color: #FFFFFF !important;
+}
+
+.video-container.daltonic-mode .info p {
+  color: #D6E4FF !important;
+}
+
+/* BOTÓN TERMINAR */
+.video-container.daltonic-mode .end-btn {
+  background: #005FCC !important;
+  color: #FFFFFF !important;
+
+  border: 2px solid #FFD60A !important;
+}
+
+.video-container.daltonic-mode .end-btn:hover {
+  background: #0A74FF !important;
+}
+
+/* PROGRESS */
+.video-container.daltonic-mode
+.progress-wrapper
+input[type="range"] {
+  accent-color: #FFD60A !important;
+}
+
+/* MENÚ LATERAL */
+.video-container.daltonic-mode .side-menu {
+  background: #102944 !important;
+}
+
+/* OVERLAY */
+.video-container.daltonic-mode .menu-overlay {
+  background-color: rgba(0, 0, 0, 0.82) !important;
+}

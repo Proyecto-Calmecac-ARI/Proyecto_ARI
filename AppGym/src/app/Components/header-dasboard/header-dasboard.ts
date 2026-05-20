@@ -4,6 +4,7 @@ import { CustomFonts } from '../../enums/fonts.enum';
 import { getFont } from '../../utils/font.util';
 import { UserService } from '../../Services/UserService';
 import { UserInterface } from '../../../interfaces/UserInterface';
+import { AccesibilidadService } from '../../Services/accesibilidad.service';
 
 @Component({
   selector: 'app-header-dasboard',
@@ -15,7 +16,7 @@ export class HeaderDasboard {
   CustomFonts = CustomFonts
   getFont = getFont
   userActual: UserInterface | null = null;
-  constructor(private userService: UserService){}
+  constructor(private userService: UserService, public accesibilidadService: AccesibilidadService){}
   ngOnInit(): void{
     this.userActual = this.userService.usuarioActual;
   }

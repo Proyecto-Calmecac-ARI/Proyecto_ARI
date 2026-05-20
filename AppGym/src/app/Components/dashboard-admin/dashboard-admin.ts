@@ -1,10 +1,11 @@
 // dashboard-admin.ts
-
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { Router } from '@angular/router';
 import { UserService } from '../../Services/UserService';
 import { UserInterface } from '../../../interfaces/UserInterface';
+import { AccesibilidadService } from '../../Services/accesibilidad.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-dashboard-admin',
@@ -14,7 +15,6 @@ import { UserInterface } from '../../../interfaces/UserInterface';
   styleUrl: './dashboard-admin.scss',
 })
 export class DashboardAdmin implements OnInit {
-
   vistaActual = 'dashboard';
 
   usuarios: UserInterface[] = [];
@@ -29,82 +29,96 @@ export class DashboardAdmin implements OnInit {
       fecha: 'Lunes',
       calorias: 450,
       rutinas: 2,
-      peso: 82
+      peso: 82,
     },
     {
       fecha: 'Martes',
       calorias: 700,
       rutinas: 3,
-      peso: 81.5
+      peso: 81.5,
     },
     {
       fecha: 'Miércoles',
       calorias: 500,
       rutinas: 2,
-      peso: 81
+      peso: 81,
     },
     {
       fecha: 'Jueves',
       calorias: 900,
       rutinas: 4,
-      peso: 80.7
+      peso: 80.7,
     },
     {
       fecha: 'Viernes',
       calorias: 600,
       rutinas: 3,
-      peso: 80.3
-    }
+      peso: 80.3,
+    },
   ];
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private http: HttpClient,
+    public accesibilidadService: AccesibilidadService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
+    // VALIDAR SESIÓN
+    const usuario = this.userService.obtenerUsuarioActual();
 
-    this.usuarios =
-      this.userService.obtenerUsuarios();
+    if (!usuario) {
+      this.router.navigate(['/login'], {
+        replaceUrl: true,
+      });
 
-    this.totalUsuarios =
-      this.usuarios.length;
+      return;
+    }
 
-    this.usuariosActivos =
-      this.usuarios.filter(
-        u => u.planActivo
-      ).length;
+    // OBTENER TODOS LOS USUARIOS
+    this.usuarios = this.userService.obtenerUsuarios();
 
-    this.usuariosInactivos =
-      this.totalUsuarios -
-      this.usuariosActivos;
+    // ESTADÍSTICAS
+    this.totalUsuarios = this.usuarios.length;
 
-    this.totalCalorias =
-      this.usuarios.reduce(
-        (acc, usuario) =>
-          acc +
-          (usuario.caloriasQuemadas || 0),
-        0
-      );
+    this.usuariosActivos = this.usuarios.filter((u) => u.planActivo).length;
+
+    this.usuariosInactivos = this.totalUsuarios - this.usuariosActivos;
+
+    this.totalCalorias = this.usuarios.reduce(
+      (acc, usuario) => acc + (usuario.caloriasQuemadas || 0),
+      0,
+    );
   }
 
   cambiarVista(vista: string) {
-
     this.vistaActual = vista;
   }
 
-  enviarWhatsApp(usuario: UserInterface) {
+  enviarCorreoAutomatico(usuario: any) {
+    this.http
+      .post('http://localhost:3000/enviar-correo', {
+        usuario,
+        tipo: 'recordatorio',
+      })
+      .subscribe({
+        next: () => {
+          console.log('Correo enviado');
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+  }
 
-    const mensaje = encodeURIComponent(`
-🏋️ GYM APP
-👤 Usuario: ${usuario.nombreUsuario}
-🔥 Sigue entrenando
-💪 No abandones tu rutina
-🚀 La disciplina crea resultados
-    `);
+  cerrarSesion(): void {
+    // BORRAR SESIÓN
+    this.userService.cerrarSesion();
 
-    window.open(
-      `https://wa.me/5212283350039?text=${mensaje}`,
-      '_blank'
-    );
+    // REDIRECCIÓN SIN PODER REGRESAR
+    this.router.navigateByUrl('/login', {
+      replaceUrl: true,
+    });
   }
 }

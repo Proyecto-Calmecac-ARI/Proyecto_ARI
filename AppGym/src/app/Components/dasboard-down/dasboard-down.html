@@ -1,4 +1,4 @@
-<div class="videos-container">
+<div class="videos-container" [class.daltonic-mode]="accesibilidadService.modoDaltonicoActivo">
      <h2 class="titulo-lista" [ngStyle]="{ 'font-family': getFont(CustomFonts.IMPACT)}">Lista de
     videos</h2>
         <div class="videos-grid">

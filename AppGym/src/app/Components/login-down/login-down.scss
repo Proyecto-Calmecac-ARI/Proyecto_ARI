@@ -89,3 +89,43 @@
     font-size: 34px;
   }
 }
+/* ===================================== */
+/* MODO DALTÓNICO */
+/* ===================================== */
+.page-wrapper.daltonic-mode {
+  background: #081018 !important;
+  .titulo {
+    color: #FFD60A !important;
+  }
+  .planes-container {
+    color: #FFFFFF !important;
+  }
+  .plan-card {
+    background: #102542 !important;
+    color: #FFFFFF !important;
+    border: 2px solid #FFD60A;
+    box-shadow:
+      0 0 20px rgba(255,214,10,0.15);
+  }
+  .plan-title {
+    color: #FFD60A !important;
+  }
+  .rojo {
+    color: #FFD60A !important;
+  }
+  .plan-desc {
+    color: #E5E7EB !important;
+  }
+  .plan-price {
+    color: #FFFFFF !important;
+  }
+  .precio-rojo {
+    color: #FFD60A !important;
+  }
+  .precio-negro {
+    color: #FFFFFF !important;
+  }
+  .footer {
+    color: #FFD60A !important;
+  }
+}

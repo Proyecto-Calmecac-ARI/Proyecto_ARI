@@ -6,6 +6,7 @@ import { AsistenciasInterface } from './AsistenciasInterface';
 export interface UserInterface {
   // Credenciales
   correo: string;
+  rol: string;
   contrasena: string;
   // Información personal
   nombreUsuario?: string;

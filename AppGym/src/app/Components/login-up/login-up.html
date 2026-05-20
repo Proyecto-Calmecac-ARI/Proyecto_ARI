@@ -1,4 +1,4 @@
-<div class="login-wrapper">
+<div class="login-wrapper" [class.daltonic-mode]="accesibilidadService.modoDaltonicoActivo">
   <!-- BOTON DALTONICO -->
   <button
     class="daltonic-toggle" (click)="activarModoDaltonico()">Modo Daltonico</button>
@@ -51,6 +51,7 @@
 </div>
 <!-- ALERTA PERSONALIZADA -->
 <div
+  [class.daltonic-mode]="accesibilidadService.modoDaltonicoActivo"
   class="alert-backdrop"
   *ngIf="mostrarAlerta">
   <div class="alert-box">

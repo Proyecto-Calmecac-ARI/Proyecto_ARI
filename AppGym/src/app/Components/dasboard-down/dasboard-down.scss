@@ -103,3 +103,61 @@
     flex: 1 1 100%;
   }
 }
+
+/* ===================================== */
+/* MODO DALTÓNICO */
+/* ===================================== */
+
+.videos-container.daltonic-mode {
+
+  .titulo-lista {
+
+    color: #FFD60A !important;
+
+    text-shadow:
+      0 0 10px rgba(255,214,10,0.25);
+
+  }
+
+  .video-card {
+
+    background: #11253D !important;
+
+    border: 2px solid #FFD60A !important;
+
+    box-shadow:
+      0 0 18px rgba(255,214,10,0.15);
+
+  }
+
+  .video-card:hover {
+
+    transform: scale(1.05);
+
+    box-shadow:
+      0 0 22px rgba(255,214,10,0.35);
+
+  }
+
+  .video-card img {
+
+    filter: brightness(0.78) contrast(1.08);
+
+  }
+
+  .video-card:hover img {
+
+    filter: brightness(1);
+
+  }
+
+  .video-title {
+
+    color: #FFFFFF !important;
+
+    text-shadow:
+      2px 2px 4px rgba(0,0,0,0.9);
+
+  }
+
+}

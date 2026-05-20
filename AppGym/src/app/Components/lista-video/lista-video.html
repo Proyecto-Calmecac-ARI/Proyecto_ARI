@@ -1,5 +1,6 @@
 <!-- Eliminado el host para que funcione dentro del menú lateral -->
 <div
+  [class.daltonic-mode]="accesibilidadService.modoDaltonicoActivo"
   class="lista-video"
   [ngStyle]="{ 'font-family': getFont(CustomFonts.IMPACT) }"
 >

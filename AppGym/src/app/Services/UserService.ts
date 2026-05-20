@@ -5,9 +5,11 @@ import { UserInterface } from '../../interfaces/UserInterface';
   providedIn: 'root',
 })
 export class UserService {
+  usuarioActual: UserInterface | null = null;
   private usuarios: UserInterface[] = [
     {
       correo: 'jorgearmando177@gmail.com',
+      rol: "admin",
       contrasena: '1234',
       telefono: '2283350039',
       nombreUsuario: 'Jorge Armando',
@@ -79,6 +81,7 @@ export class UserService {
     },
     {
       correo: 'prueba1@gmail.com',
+      rol: "user",
       contrasena: '1234',
       telefono: '2283350039',
       nombreUsuario: 'Prueba',
@@ -104,6 +107,7 @@ export class UserService {
     {
       correo: 'prueba2@gmail.com',
       contrasena: '1234',
+      rol: "user",
       telefono: '2283350039',
       nombreUsuario: 'Prueba',
       apellidosUsuario: 'Prueba2',
@@ -138,6 +142,7 @@ export class UserService {
     {
       correo: 'prueba3@gmail.com',
       contrasena: '1234',
+      rol: "user",
       telefono: '2283350039',
       nombreUsuario: 'Prueba',
       apellidosUsuario: 'Prueba3',
@@ -209,6 +214,7 @@ export class UserService {
     {
       correo: 'admin@gmail.com',
       contrasena: '1234',
+      rol: "user",
       telefono: '2283350039',
       nombreUsuario: 'Administrador',
       apellidosUsuario: 'Gym',
@@ -232,8 +238,6 @@ export class UserService {
     },
   ];
 
-  usuarioActual: UserInterface | null = null;
-
   constructor() {
     this.generarUsuarios();
   }
@@ -243,6 +247,7 @@ export class UserService {
       this.usuarios.push({
         correo: `usuario${i}@gmail.com`,
         contrasena: '1234',
+        rol: "user",
         telefono: '2283350039',
         nombreUsuario: `Usuario${i}`,
         apellidosUsuario: `Apellido${i}`,
@@ -267,9 +272,25 @@ export class UserService {
     }
   }
 
-  obtenerUsuarios(): UserInterface[] {
-    return this.usuarios;
+  obtenerUsuarioActual(): UserInterface | null {
+
+  // Primero intenta memoria
+  if (this.usuarioActual) {
+    return this.usuarioActual;
   }
+
+  // Luego localStorage
+  const usuarioGuardado = localStorage.getItem('usuarioActual');
+
+  if (usuarioGuardado) {
+
+    this.usuarioActual = JSON.parse(usuarioGuardado);
+
+    return this.usuarioActual;
+  }
+
+  return null;
+}
 
   limpiarUsuarioActual(): void {
     this.usuarioActual = null;
@@ -284,10 +305,24 @@ export class UserService {
   agregarUsuario(usuario: UserInterface): void {
     this.usuarios.push(usuario);
   }
+  obtenerUsuarios(): UserInterface[] {
+  return this.usuarios;
+}
 
   guardarUsuarioActual(usuario: UserInterface): void {
-    this.usuarioActual = usuario;
+   this.usuarioActual = usuario;
+
+  localStorage.setItem(
+    'usuarioActual',
+    JSON.stringify(usuario)
+  );
   }
+  cerrarSesion() {
+
+  this.usuarioActual = null;
+
+  localStorage.removeItem('usuarioActual');
+}
 
   actualizarUsuario(usuarioActualizado: UserInterface): void {
     const index = this.usuarios.findIndex((u) => u.correo === usuarioActualizado.correo);

@@ -6,8 +6,8 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../../Services/UserService';
 import { UserInterface } from '../../../interfaces/UserInterface';
-import { ThemeService } from '../../Services/theme';
 import { HttpClient } from '@angular/common/http';
+import { AccesibilidadService } from '../../Services/accesibilidad.service';
 @Component({
   selector: 'app-login-up',
   imports: [CommonModule, FormsModule],
@@ -21,11 +21,12 @@ export class LoginUp {
   contrasena: string = '';
   mostrarAlerta = false;
   mensajeAlerta = '';
+  modoDaltonicoActivo = false;
   constructor(
     private userService: UserService,
     private router: Router,
-     private themeService: ThemeService,
-     private http: HttpClient
+    private http: HttpClient,
+    public accesibilidadService: AccesibilidadService,
   ) {}
   login() {
     // Validación campos vacíos
@@ -59,7 +60,11 @@ export class LoginUp {
     // Enviar WhatsApp
     this.enviarCorreoAutomatico(usuario);
     // Redirecciones
-    this.router.navigate(['/dashboard']);
+    if (usuario.rol == "admin") {
+      this.router.navigate(['/dashboardAdmin']);
+    } else {
+      this.router.navigate(['/dashboard']);
+    }
   }
   register() {
     // Campos vacíos
@@ -82,6 +87,7 @@ export class LoginUp {
     // Crear nuevo usuario (registro inicial)
     const nuevoUsuario: UserInterface = {
       correo: this.correo,
+      rol: "user",
       contrasena: this.contrasena,
       nombreUsuario: undefined,
       apellidosUsuario: undefined,
@@ -111,18 +117,17 @@ export class LoginUp {
     this.router.navigate(['/formulario']);
   }
   enviarCorreoAutomatico(usuario: any) {
-  this.http.post(
-    'http://localhost:3000/enviar-correo',
-    { usuario, tipo: 'recordatorio' }
-  ).subscribe({
-    next: (resp) => {
-      console.log('Correo enviado');
-    },
-    error: (err) => {
-      console.log(err);
-    }
-  });
-}
+    this.http
+      .post('http://localhost:3000/enviar-correo', { usuario, tipo: 'recordatorio' })
+      .subscribe({
+        next: (resp) => {
+          console.log('Correo enviado');
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+  }
   scrollAPlanes() {
     const element = document.getElementById('planes');
     element?.scrollIntoView({ behavior: 'smooth' });
@@ -140,6 +145,6 @@ export class LoginUp {
     this.mensajeAlerta = '';
   }
   activarModoDaltonico(): void {
-    this.themeService.toggleDaltonicMode();
+    this.accesibilidadService.toggleModoDaltonico();
   }
 }

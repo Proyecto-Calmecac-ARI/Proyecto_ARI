@@ -1,6 +1,6 @@
 <!-- dashboard-admin.html -->
 
-<div class="layout">
+<div class="layout" [class.daltonic-mode]="accesibilidadService.modoDaltonicoActivo">
 
     <!-- SIDEBAR -->
 
@@ -30,43 +30,38 @@
 
             <ul>
 
-                <li
-                    [class.active]="vistaActual === 'dashboard'"
-                    (click)="cambiarVista('dashboard')">
+                <li [class.active]="vistaActual === 'dashboard'" (click)="cambiarVista('dashboard')">
 
                     📊 Dashboard
 
                 </li>
 
-                <li
-                    [class.active]="vistaActual === 'usuarios'"
-                    (click)="cambiarVista('usuarios')">
+                <li [class.active]="vistaActual === 'usuarios'" (click)="cambiarVista('usuarios')">
 
                     👥 Usuarios
 
                 </li>
 
-                <li
-                    [class.active]="vistaActual === 'rutinas'"
-                    (click)="cambiarVista('rutinas')">
+                <li [class.active]="vistaActual === 'rutinas'" (click)="cambiarVista('rutinas')">
 
                     🏋️ Rutinas
 
                 </li>
 
-                <li
-                    [class.active]="vistaActual === 'evolucion'"
-                    (click)="cambiarVista('evolucion')">
+                <li [class.active]="vistaActual === 'evolucion'" (click)="cambiarVista('evolucion')">
 
                     📈 Evolución
 
                 </li>
 
-                <li
-                    [class.active]="vistaActual === 'rankings'"
-                    (click)="cambiarVista('rankings')">
+                <li [class.active]="vistaActual === 'rankings'" (click)="cambiarVista('rankings')">
 
                     🏆 Rankings
+
+                </li>
+                <li class="logout-btn" (click)="cerrarSesion()">
+
+                    🚪 Salir
 
                 </li>
 
@@ -98,9 +93,7 @@
 
             <div class="admin-profile">
 
-                <img
-                    src="https://i.pravatar.cc/100"
-                    alt="admin">
+                <img src="https://i.pravatar.cc/100" alt="admin">
 
                 <div>
 
@@ -216,9 +209,7 @@
 
             <div class="evolution-grid">
 
-                <div
-                    class="evolution-card"
-                    *ngFor="let item of evolucionDiaria">
+                <div class="evolution-card" *ngFor="let item of evolucionDiaria">
 
                     <h3>
                         {{ item.fecha }}
@@ -294,8 +285,7 @@
 
                     <tbody>
 
-                        <tr
-                            *ngFor="let usuario of usuarios">
+                        <tr *ngFor="let usuario of usuarios">
 
                             <td>
                                 {{ usuario.nombreUsuario }}
@@ -319,15 +309,13 @@
 
                             <td>
 
-                                <span
-                                    class="status"
-                                    [class.active-status]="usuario.planActivo"
+                                <span class="status" [class.active-status]="usuario.planActivo"
                                     [class.inactive-status]="!usuario.planActivo">
 
                                     {{
-                                        usuario.planActivo
-                                        ? 'Activo'
-                                        : 'Inactivo'
+                                    usuario.planActivo
+                                    ? 'Activo'
+                                    : 'Inactivo'
                                     }}
 
                                 </span>
@@ -336,10 +324,9 @@
 
                             <td>
 
-                                <button
-                                    (click)="enviarWhatsApp(usuario)">
+                                <button (click)="enviarCorreoAutomatico(usuario)">
 
-                                    WhatsApp
+                                    Enviar Recordatorio
 
                                 </button>
 
@@ -443,9 +430,7 @@
 
             <div class="evolution-grid">
 
-                <div
-                    class="evolution-card"
-                    *ngFor="let item of evolucionDiaria">
+                <div class="evolution-card" *ngFor="let item of evolucionDiaria">
 
                     <h3>
                         {{ item.fecha }}
@@ -481,9 +466,7 @@
 
             <div class="cards">
 
-                <div
-                    class="card"
-                    *ngFor="let usuario of usuarios">
+                <div class="card" *ngFor="let usuario of usuarios">
 
                     <div>
 
